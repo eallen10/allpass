@@ -1,0 +1,6 @@
+.MuiFormLabel-root.Mui-focused {
+    padding-top: 6px !important;
+}
+.MuiFormControl-root {
+    width: 100%;
+}
