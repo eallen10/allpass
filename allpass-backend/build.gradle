@@ -12,6 +12,8 @@ plugins {
 
     // Apply the application plugin to add support for building an application
     id 'application'
+    id 'org.springframework.boot' version '2.0.5.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.7.RELEASE'
 }
 
 // Define the main class for the application
@@ -23,6 +25,22 @@ dependencies {
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
+
+    implementation 'org.springframework.boot:spring-boot-dependencies:2.0.5.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    components {
+        withModule('org.springframework:spring-beans') {
+            allVariants {
+                withDependencyConstraints {
+                    // Need to patch constraints because snakeyaml is an optional dependency
+                    it.findAll { it.name == 'snakeyaml' }.each { it.version { strictly '1.19' } }
+                }
+            }
+        }
+    }
 }
 
 // In this section you declare where to find the dependencies of your project
@@ -30,4 +48,8 @@ repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+}
+
+bootJar {
+    mainClassName = 'hello.App'
 }
