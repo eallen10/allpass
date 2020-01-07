@@ -9,14 +9,12 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import {getData} from '../actions/dataActions'
+import {getData} from '../../actions/dataActions.js'
 
-class DashboardComponent extends Component {
+class MobileApp extends Component {
   constructor() {
     super();
-    this.state = {
-      rows: [{website: 'google', password: 'pass'}]
-    }
+    this.state = {}
   }
 
   componentDidMount() {
@@ -24,10 +22,9 @@ class DashboardComponent extends Component {
   }
 
   render() {
-    console.log(this.props.data);
     return (
-        <div>
-          <TableContainer style={{width: "300px"}}>
+        <div id="mobileApp">
+          <TableContainer >
             <Table size="small">
               <TableHead>
                 <TableRow>
@@ -65,4 +62,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DashboardComponent);
+)(MobileApp);

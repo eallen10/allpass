@@ -7,6 +7,9 @@ import { withCookies } from 'react-cookie';
 import PropTypes from 'prop-types';
 import { TextField, Button } from '@material-ui/core';
 import { connect } from 'react-redux';
+import {
+  isMobile
+} from "react-device-detect";
 
 class LoginComponent extends React.Component {
   constructor(props) {
@@ -18,13 +21,8 @@ class LoginComponent extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  // const [name, setName] = React.useState('Cat in the Hat');
-  // const handleChange = event => {
-  //   setName(event.target.value);
-  // };
 
   handleChange = (event) => {
-    console.log(event.target.name);
     this.setState({
       [event.target.name]: event.target.value,
     });
@@ -32,24 +30,29 @@ class LoginComponent extends React.Component {
   handleSubmit() {
     const { username, password } = this.state;
     if (username && password) {
-      console.log('submit');
-      console.log(username);
-      console.log(password);
       this.props.login(username, password);
     }
   }
 
+  detect = () => {
+    if(isMobile) {
+      return "/app/mobile"
+    } else {
+      return "/app/desktop"
+    }
+  }
+
   componentDidUpdate() {
-    console.log(this.state.username);
+    console.log(this.detect());
     if (this.props.jwt) {
-      this.props.history.push('/app/dashboard');
+      this.props.history.push(this.detect());
     }
   }
 
   UNSAFE_componentWillMount() {
     //TODO: need to validate jwt
     if (this.props.cookies.get('jwt')) {
-      this.props.history.push('/app/dashboard');
+      this.props.history.push(this.detect());
     }
   }
   render() {

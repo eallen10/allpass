@@ -84,7 +84,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 /* All access to the authentication service are permitted without authentication (actually as anonymous) */
                 .antMatchers("/api/login/**").permitAll()
-
                 /* All the other requests need an authentication.
                  Role access is done on Methods using annotations like @PreAuthorize
                  */

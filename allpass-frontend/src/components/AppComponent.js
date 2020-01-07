@@ -1,9 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import DashboardComponent from './DashboardComponent';
+import MobileApp from './mobile/MobileApp';
+import DesktopApp from './desktop/DesktopApp';
 import { withCookies } from 'react-cookie';
 import { assignJWT } from '../actions/loginActions';
 import { connect } from 'react-redux';
+import {
+  isMobile
+} from "react-device-detect";
 
 class AppComponent extends React.Component {
   UNSAFE_componentWillMount() {
@@ -16,14 +20,21 @@ class AppComponent extends React.Component {
     }
   }
 
+  componentDidMount() {
+    if (isMobile) {
+      this.props.history.push("/app/mobile");
+    } else {
+      this.props.history.push("/app/desktop");
+    }
+  }
+
   render() {
     return (
       <div id="app">
-        <div id="content">
-          <Switch>
-            <Route path="/app/dashboard" component={DashboardComponent} />
-          </Switch>
-        </div>
+        <Switch>
+          <Route path="/app/mobile" component={MobileApp} />
+          <Route path="/app/desktop" component={DesktopApp} />
+        </Switch>
       </div>
     );
   }
