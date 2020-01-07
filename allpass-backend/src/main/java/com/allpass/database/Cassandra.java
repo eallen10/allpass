@@ -89,6 +89,13 @@ public class Cassandra {
                 .addColumn("lname", DataType.text())
                 .addColumn("pass", DataType.text())
                 .getQueryString());
+        tables.put("data", SchemaBuilder.createTable("data")
+                .ifNotExists()
+                .addPartitionKey("id", DataType.text())
+                .addColumn("website", DataType.text())
+                .addColumn("pass", DataType.text())
+                .addColumn("timestamp", DataType.bigint())
+                .getQueryString());
         for (String table : tables.keySet()) {
             if (cluster.getMetadata().getKeyspace("allpass").getTable(table) == null) { //check if table exists
                 log.warn("Table [{}] does not exist ... attempting to create ...", table);

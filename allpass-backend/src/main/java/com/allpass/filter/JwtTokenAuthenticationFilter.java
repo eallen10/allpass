@@ -60,10 +60,10 @@ public class JwtTokenAuthenticationFilter extends GenericFilterBean {
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
 
         //check that the user isn't trying to login, we don't need to inspect someone's JWT before they have a JWT
-        System.out.println("servlet request: ");
-        System.out.println("request uri: " + httpServletRequest.getRequestURI());
-        System.out.println("header: " +  httpServletRequest.getHeader(AUTHORIZATION).contains("Basic "));
+        System.out.println("header: " + httpServletRequest.getHeader(AUTHORIZATION));
+        System.out.println("uri: " + httpServletRequest.getRequestURI());
         if (httpServletRequest.getRequestURI().contains("/login") && httpServletRequest.getHeader(AUTHORIZATION).contains("Basic ")) {
+            System.out.println("here");
             filterChain.doFilter(httpServletRequest, httpServletResponse);
             return;
         }

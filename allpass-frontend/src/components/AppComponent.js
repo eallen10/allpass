@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 class AppComponent extends React.Component {
   UNSAFE_componentWillMount() {
+    console.log("here")
     let jwt = this.props.cookies.get('jwt');
     if (jwt) {
       this.props.assignJWT(jwt);
@@ -18,9 +19,11 @@ class AppComponent extends React.Component {
   render() {
     return (
       <div id="app">
-        <Switch>
-          <Route path="/app/dashboard" component={DashboardComponent} />
-        </Switch>
+        <div id="content">
+          <Switch>
+            <Route path="/app/dashboard" component={DashboardComponent} />
+          </Switch>
+        </div>
       </div>
     );
   }
