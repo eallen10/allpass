@@ -2,46 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48ef3ca2-ecfe-4124-b755-3ce6d1bee92c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/allpass/controller/DataController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/allpass/database/DataTuple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileContent/fileContent.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bootScripts/allpass-backend" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bootScripts/allpass-backend.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/allpass/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/allpass/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/allpass/database/Cassandra.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/allpass/database/Cassandra.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/allpass/filter/JwtTokenAuthenticationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/allpass/filter/JwtTokenAuthenticationFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/AppTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/distributions/allpass-backend-boot.tar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/distributions/allpass-backend-boot.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/distributions/allpass-backend.tar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/distributions/allpass-backend.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/allpass-backend.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/AppTest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/default-package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/scripts/allpass-backend" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/scripts/allpass-backend.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-AppTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/bootJar/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/allpass/database/Cassandra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allpass/database/Cassandra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allpass/controller/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allpass/controller/DataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allpass/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allpass/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/allpass/filter/JwtTokenAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allpass/filter/JwtTokenAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../allpass-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/actions/loginActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/actions/loginActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/components/AppComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/components/AppComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/components/DashboardComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/components/DashboardComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allpass/security/WebSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allpass/security/WebSecurityConfiguration.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -63,6 +27,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/security/WebSecurityConfiguration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="488">
+              <caret line="85" selection-start-line="85" selection-end-line="86" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/App.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -73,10 +49,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/utils/RESTUtils.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/controller/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+            <state relative-caret-position="450">
+              <caret line="60" column="44" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,10 +61,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/database/Cassandra.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/utils/RESTUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1200">
-              <caret line="89" column="51" selection-start-line="89" selection-start-column="51" selection-end-line="89" selection-end-column="51" />
+            <state relative-caret-position="525">
+              <caret line="56" column="33" lean-forward="true" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -120,17 +96,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/controller/DataController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="601">
+              <caret line="43" column="29" lean-forward="true" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/filter/JwtTokenAuthenticationFilter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="64" column="57" lean-forward="true" selection-start-line="64" selection-start-column="57" selection-end-line="64" selection-end-column="57" />
+            <state relative-caret-position="960">
+              <caret line="64" column="73" lean-forward="true" selection-start-line="64" selection-start-column="73" selection-end-line="64" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -179,6 +158,7 @@
       <find>securityUtils</find>
       <find>hello.ap</find>
       <find>ROLE</find>
+      <find>/login</find>
     </findStrings>
     <replaceStrings>
       <replace>allpass</replace>
@@ -194,18 +174,18 @@
         <option value="$PROJECT_DIR$/src/main/java/com/allpass/controller/filter/JwtTokenAuthenticationFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/allpass/utils/RESTUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/allpass/utils/SecurityUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/allpass/security/WebSecurityConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/allpass/utils/GSON.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/com/allpass/database/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/allpass/App.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/allpass/controller/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/allpass/controller/DataController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/allpass/database/Cassandra.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/allpass/database/DataTuple.java" />
         <option value="$PROJECT_DIR$/src/test/java/AppTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/allpass/controller/DataController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/allpass/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/allpass/filter/JwtTokenAuthenticationFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/allpass/security/WebSecurityConfiguration.java" />
       </list>
     </option>
   </component>
@@ -379,7 +359,7 @@
     <frame x="0" y="1078" width="1920" height="1082" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3271078" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3271078" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -440,43 +420,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="15" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/security/WebSecurityConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/database/Cassandra.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="89" column="51" selection-start-line="89" selection-start-column="51" selection-end-line="89" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/database/DataTuple.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -491,13 +434,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/controller/DataController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
@@ -528,16 +464,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/utils/RESTUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.sdkman/candidates/gradle/4.5/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/8.5.28/4dbe0fbab4a1a3b8bfb097b83e8409096f8235cd/tomcat-embed-core-8.5.28-sources.jar!/org/apache/catalina/core/ApplicationFilterChain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -545,10 +471,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/database/Cassandra.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="89" column="51" selection-start-line="89" selection-start-column="51" selection-end-line="89" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="60" column="44" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/controller/DataController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="601">
+          <caret line="43" column="29" lean-forward="true" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/filter/JwtTokenAuthenticationFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="64" column="57" lean-forward="true" selection-start-line="64" selection-start-column="57" selection-end-line="64" selection-end-column="57" />
+        <state relative-caret-position="960">
+          <caret line="64" column="73" lean-forward="true" selection-start-line="64" selection-start-column="73" selection-end-line="64" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/utils/RESTUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="56" column="33" lean-forward="true" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/allpass/security/WebSecurityConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="85" selection-start-line="85" selection-end-line="86" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

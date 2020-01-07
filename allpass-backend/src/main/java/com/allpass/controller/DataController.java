@@ -38,7 +38,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
  */
 @Log4j2
 @RestController
-@RequestMapping("/data")
+@RequestMapping("/api/data")
 @PropertySource("classpath:application.properties")
 @SuppressWarnings("unused")
 public class DataController {

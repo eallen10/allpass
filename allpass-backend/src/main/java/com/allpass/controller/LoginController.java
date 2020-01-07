@@ -39,6 +39,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  */
 @Log4j2
 @RestController
+@RequestMapping("/api")
 @PropertySource("classpath:application.properties")
 @SuppressWarnings("unused")
 public class LoginController {
@@ -57,7 +58,7 @@ public class LoginController {
      * 401 UNAUTHORIZED - the request login information was invalid or missing
      * 500 INTERNAL SERVER ERROR - an error occurred
      */
-    @RequestMapping(method = POST, value = "login")
+    @RequestMapping(method = POST, value = "/login")
     public ResponseEntity login(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         //check that the request contains an authorization header with basic auth
         String authorizationHeader = httpServletRequest.getHeader(AUTHORIZATION);
