@@ -44,7 +44,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class DataController {
 
     @RequestMapping(method = GET, value = "/getData")
-    public ResponseEntity login(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+    public ResponseEntity getData(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         //check if any users exist. If not, create initial admin user and jwt
         List<Row> initialRows = Cassandra.query("users", Lists.newArrayList(), "*");
         Set<DataTuple> tuples = new HashSet<>();

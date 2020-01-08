@@ -4,30 +4,27 @@ import MobileApp from './mobile/MobileApp';
 import DesktopApp from './desktop/DesktopApp';
 import { withCookies } from 'react-cookie';
 import { assignJWT } from '../actions/loginActions';
+import { logout } from '../actions/loginActions';
 import { connect } from 'react-redux';
-import {
-  isMobile
-} from "react-device-detect";
+import LoginComponent from './LoginComponent'
 
 class AppComponent extends React.Component {
+
   UNSAFE_componentWillMount() {
-    let jwt = this.props.cookies.get('jwt');
-    if (jwt) {
-      this.props.assignJWT(jwt);
-      if (isMobile) {
-        this.props.history.push("/app/mobile");
-      } else {
-        this.props.history.push("/app/desktop");
-      }
-    } else {
-      this.props.history.push('/login');
-    }
+    // console.log('AppComponent will mount')
+    //TODO: need to validate jwt
+    // console.log('(AppComponent will mount) cookie jwt: ' + this.props.cookies.get('jwt'))
+    // if (this.props.cookies.get('jwt')) {
+    //   this.props.assignJWT(this.props.cookies.get('jwt'));
+    // }
+    this.props.history.push('/app/login')
   }
 
   render() {
     return (
       <div id="app">
-        <Switch>
+        <Switch> 
+          <Route path="/app/login" component={LoginComponent} />        
           <Route path="/app/mobile" component={MobileApp} />
           <Route path="/app/desktop" component={DesktopApp} />
         </Switch>
@@ -37,12 +34,19 @@ class AppComponent extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  assignJWT: jwt => dispatch(assignJWT(jwt))
+  assignJWT: jwt => dispatch(assignJWT(jwt)),
+  logout: () => dispatch(logout())
 });
+
+const mapStateToProps = state => {
+  return {
+    loginSuccess: state.login.success
+  };
+};
 
 export default withCookies(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(AppComponent)
 );

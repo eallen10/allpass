@@ -1,6 +1,12 @@
 .MuiFormLabel-root.Mui-focused {
-    padding-top: 6px !important;
+  padding-top: 6px !important;
 }
 .MuiFormControl-root {
-    width: 100%;
+  width: 100%;
+}
+.ellipsis {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

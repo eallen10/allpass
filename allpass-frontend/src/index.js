@@ -1,7 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import store from './store/index';
-import LoginComponent from './components/LoginComponent';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 import AppComponent from './components/AppComponent';
@@ -33,9 +32,8 @@ function App() {
         <CookiesProvider>
           <Provider store={store}>
             <Switch>
-                <Route exact path="/login" component={LoginComponent} />
                 <Route path="/app" component={AppComponent} />
-                <Redirect from="/" to="login" />
+                <Redirect from="/" to="/app" />
             </Switch>
           </Provider>
         </CookiesProvider>

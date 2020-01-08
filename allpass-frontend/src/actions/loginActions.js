@@ -31,8 +31,8 @@ import {
   export const login = (username, password) => {
     return dispatch => {
       dispatch(loginRequest(username));
-      // fetch('http://localhost:8080/api/login', {
-        fetch('https://personalpass.net/api/login', {
+      fetch('http://localhost:8080/api/login', {
+        // fetch('https://personalpass.net/api/login', {
         method: 'POST',
         headers: {
           Authorization: 'Basic ' + btoa(username + ':' + password)
@@ -65,7 +65,15 @@ import {
   
   function setCookie(cname, cvalue, exdays) {
     var d = new Date();
-    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+    let jwt = auth0.decode(cvalue);
+    d.setTime(d.getTime() + jwt.exp * 1000);
     var expires = 'expires=' + d.toUTCString();
     document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
   }
+
+  // function setCookie(cname, cvalue, exdays) {
+  //   var d = new Date();
+  //   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  //   var expires = 'expires=' + d.toUTCString();
+  //   document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
+  // }

@@ -17,8 +17,8 @@ const getDataRequest = () => ({
 export const getData = () => {
     return dispatch => {
       dispatch(getDataRequest());
-      // fetch('http://localhost:8080/api/data/getData', {
-        fetch('https://personalpass.net/api/data/getData', {
+      fetch('http://localhost:8080/api/data/getData', {
+        // fetch('https://personalpass.net/api/data/getData', {
         method: 'GET',
         credentials: 'include'
       })
