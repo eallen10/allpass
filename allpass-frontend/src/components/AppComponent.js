@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import MobileApp from './mobile/MobileApp';
 import DesktopApp from './desktop/DesktopApp';
 import { withCookies } from 'react-cookie';
@@ -17,16 +17,16 @@ class AppComponent extends React.Component {
     if (this.props.cookies.get('jwt')) {
       this.props.assignJWT(this.props.cookies.get('jwt'));
     }
-    this.props.history.push('/app/login')
+    this.props.history.push('/login')
   }
 
   render() {
     return (
       <div id="app">
         <Switch> 
-          <Route path="/app/login" component={LoginComponent} />        
-          <Route path="/app/mobile" component={MobileApp} />
-          <Route path="/app/desktop" component={DesktopApp} />
+          <Route path="/login" component={LoginComponent} />        
+          <Route path="/mobile" component={MobileApp} />
+          <Route path="/desktop" component={DesktopApp} />
         </Switch>
       </div>
     );
@@ -44,9 +44,9 @@ const mapStateToProps = state => {
   };
 };
 
-export default withCookies(
+export default withCookies(withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
   )(AppComponent)
-);
+));

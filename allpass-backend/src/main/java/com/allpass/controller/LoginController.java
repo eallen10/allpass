@@ -122,7 +122,7 @@ public class LoginController {
                             .withClaim("role", role)
                             .withClaim("fname", user.getFname())
                             .withClaim("lname", user.getLname())
-                            .withExpiresAt(new Date(System.currentTimeMillis() + 10000 /*1 day in milliseconds*/))
+                            .withExpiresAt(new Date(System.currentTimeMillis() + 10000000 /*1 day in milliseconds*/))
                             .sign(Algorithm.HMAC256(Resources.toString(Resources.getResource("secret.key"), Charsets.UTF_8)));
                 } catch (IOException e) {
                     e.printStackTrace();

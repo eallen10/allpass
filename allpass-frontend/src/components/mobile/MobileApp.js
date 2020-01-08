@@ -16,7 +16,7 @@ class MobileApp extends Component {
   UNSAFE_componentWillMount() {
     console.log('MobileApp will mount')
     if(this.props.jwt && this.props.decodedJWT.exp * 1000 > new Date().getTime()) {
-      this.props.history.push('/app/mobile/logs');
+      this.props.history.push('/mobile/logs');
     } else {
       this.handleLogout();
     }
@@ -25,7 +25,7 @@ class MobileApp extends Component {
   handleLogout() {
     document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; //remove jwt cookie
     this.props.logout(); //logout from redux state
-    this.props.history.push('/app/login');
+    this.props.history.push('/login');
   }
 
   render() {
@@ -35,8 +35,8 @@ class MobileApp extends Component {
           <TopAppBar />
           <MainDrawer />
           <Switch> 
-            <Route path="/app/mobile/logs" component={Logs} />
-            <Route path="/app/mobile/account" component={Account} />  
+            <Route path="/mobile/logs" component={Logs} />
+            <Route path="/mobile/account" component={Account} />  
           </Switch>
         </div>
     );

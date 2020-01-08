@@ -19,7 +19,7 @@ class TopAppBar extends Component {
   handleLogout() {
     document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; //remove jwt cookie
     this.props.logout(); //logout from redux state
-    this.props.history.push('/app/login');
+    this.props.history.push('/login');
   }
 
   render() {

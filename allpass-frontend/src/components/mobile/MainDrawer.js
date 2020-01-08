@@ -19,12 +19,12 @@ class MainDrawer extends Component {
             <List>
             <ListItem button>
                 <ListItemText primary={'Logs'} onClick={() => {
-                  this.props.history.push('/app/mobile/logs')
+                  this.props.history.push('/mobile/logs')
                 }} />
             </ListItem>
             <ListItem button>
                 <ListItemText primary={'Account'} onClick={() => {
-                  this.props.history.push('/app/mobile/account')
+                  this.props.history.push('/mobile/account')
                 }} />
             </ListItem>
             </List>

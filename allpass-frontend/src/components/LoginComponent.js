@@ -38,16 +38,14 @@ class LoginComponent extends React.Component {
 
   detect = () => {
     if(isMobile) {
-      return "/app/mobile"
+      return "/mobile"
     } else {
-      return "/app/desktop"
+      return "/desktop"
     }
   }
 
   componentDidUpdate() {
     console.log('LoginComponent did update')
-    console.log('(LoginComponent did update) cookie jwt: ' + this.props.cookies.get('jwt'))
-    console.log('(LoginComponent did update) cookie expiration: ' + this.props.cookies.get('expires'))
     if (this.props.jwt && this.props.decodedJWT.exp * 1000 > new Date().getTime()) {
       console.log('jwt detected, pushing' + this.detect())
       this.props.history.push(this.detect());
@@ -57,14 +55,8 @@ class LoginComponent extends React.Component {
   UNSAFE_componentWillMount() {
     console.log('LoginComponent will mount')
     //TODO: need to validate jwt
-    console.log('(LoginComponent will mount) cookie jwt: ' + this.props.cookies.get('jwt'))
-    console.log('(LoginComponent will mount) cookie expiration: ' + this.props.cookies.get('expires'))
-    console.log(new Date().getTime());
-    console.log(this.props.decodedJWT)
-    // if (this.props.jwt) {
-      if(this.props.jwt && this.props.decodedJWT.exp * 1000 > new Date().getTime()) {
-        this.props.history.push(this.detect());
-      // }
+    if(this.props.jwt && this.props.decodedJWT.exp * 1000 > new Date().getTime()) {
+      this.props.history.push(this.detect());
     }
   }
   render() {

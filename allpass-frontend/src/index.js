@@ -31,10 +31,7 @@ function App() {
       <BrowserRouter>
         <CookiesProvider>
           <Provider store={store}>
-            <Switch>
-                <Route path="/app" component={AppComponent} />
-                <Redirect from="/" to="/app" />
-            </Switch>
+            <AppComponent />
           </Provider>
         </CookiesProvider>
       </BrowserRouter>
