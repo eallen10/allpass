@@ -14,7 +14,12 @@ class MobileApp extends Component {
   }
 
   UNSAFE_componentWillMount() {
-    this.props.history.push('/app/mobile/logs');
+    console.log('MobileApp will mount')
+    if(this.props.jwt && this.props.decodedJWT.exp * 1000 > new Date().getTime()) {
+      this.props.history.push('/app/mobile/logs');
+    } else {
+      this.handleLogout();
+    }
   }
 
   handleLogout() {
@@ -44,9 +49,17 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const mapStateToProps = state => {
+  return {
+    decodedJWT: state.login.decodedJWT,
+    jwt: state.login.jwt,
+    loginSuccess: state.login.success
+  };
+};
+
 export default withRouter(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(MobileApp)
 )

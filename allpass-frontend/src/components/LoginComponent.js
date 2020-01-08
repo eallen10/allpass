@@ -108,8 +108,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     decodedJWT: state.login.decodedJWT,
-    jwt: state.login.jwt,
-    loginSuccess: state.login.success
+    jwt: state.login.jwt
   };
 };
 

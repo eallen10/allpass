@@ -11,12 +11,12 @@ import LoginComponent from './LoginComponent'
 class AppComponent extends React.Component {
 
   UNSAFE_componentWillMount() {
-    // console.log('AppComponent will mount')
-    //TODO: need to validate jwt
-    // console.log('(AppComponent will mount) cookie jwt: ' + this.props.cookies.get('jwt'))
-    // if (this.props.cookies.get('jwt')) {
-    //   this.props.assignJWT(this.props.cookies.get('jwt'));
-    // }
+    console.log('AppComponent will mount')
+    // TODO: need to validate jwt
+    console.log('(AppComponent will mount) cookie jwt: ' + this.props.cookies.get('jwt'))
+    if (this.props.cookies.get('jwt')) {
+      this.props.assignJWT(this.props.cookies.get('jwt'));
+    }
     this.props.history.push('/app/login')
   }
 
