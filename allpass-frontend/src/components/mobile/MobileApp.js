@@ -28,22 +28,9 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-
-// const CustomTableCell = withStyles(theme => ({
-//   head: {
-//     backgroundColor: theme.palette.common.black,
-//     color: theme.palette.common.white
-//   },
-//   body: {
-//     fontSize: 14
-//   }
-// }))(TableCell);
-
-
-// const customColumnStyle = {
-//   overflow: "hidden",
-//   maxWidth: "1px"
-// };
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { withCookies } from 'react-cookie';
+import { logout } from '../../actions/loginActions';
 
 class MobileApp extends Component {
   constructor() {
@@ -53,13 +40,33 @@ class MobileApp extends Component {
     }
   }
 
+  UNSAFE_componentWillMount() {
+    let jwt = this.props.cookies.get('jwt');
+    if (jwt === undefined) {
+      this.props.history.push('/login');
+    }
+  }
+
   componentDidMount() {
     this.props.getData();
+  }
+
+  handleLogout() {
+    document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; //remove jwt cookie
+    this.props.logout(); //logout from redux state
+    this.props.history.push('/login');
   }
 
   render() {
     return (
         <div id="mobileApp">
+          <Drawer open={this.state.drawer} onClose={() => {this.setState({drawer: !this.state.drawer})}}>
+              <List>
+                <ListItem button>
+                  <ListItemText primary={'text'} />
+                </ListItem>
+              </List>
+          </Drawer>
           <AppBar position="static" style={{ margin: 0 }}>
             <Toolbar>
               <IconButton 
@@ -72,15 +79,16 @@ class MobileApp extends Component {
               <Typography variant="h6">
                 PersonalPass
               </Typography>
+              <IconButton 
+                aria-label="display more actions" 
+                edge="end" color="inherit" 
+                style={{marginLeft: 'auto'}}
+                onClick={() => this.handleLogout()}
+              >
+                <ExitToAppIcon />
+              </IconButton>
             </Toolbar>
           </AppBar>
-          <Drawer open={this.state.drawer} onClose={() => {this.setState({drawer: !this.state.drawer})}}>
-              <List>
-                <ListItem button>
-                  <ListItemText primary={'text'} />
-                </ListItem>
-              </List>
-          </Drawer>
             <div id="mobileContent">
               <div id="accountsTitle" style={{margin: '14px'}}>
                 <Typography variant="h6">
@@ -137,7 +145,8 @@ class MobileApp extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getData: () => dispatch(getData())
+    getData: () => dispatch(getData()),
+    logout: () => dispatch(logout())
   };
 };
 
@@ -145,7 +154,9 @@ const mapStateToProps = state => ({
   data: state.data.data
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MobileApp);
+export default withCookies(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(MobileApp)
+)

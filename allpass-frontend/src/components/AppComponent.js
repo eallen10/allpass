@@ -11,20 +11,16 @@ import {
 
 class AppComponent extends React.Component {
   UNSAFE_componentWillMount() {
-    console.log("here")
     let jwt = this.props.cookies.get('jwt');
     if (jwt) {
       this.props.assignJWT(jwt);
+      if (isMobile) {
+        this.props.history.push("/app/mobile");
+      } else {
+        this.props.history.push("/app/desktop");
+      }
     } else {
       this.props.history.push('/login');
-    }
-  }
-
-  componentDidMount() {
-    if (isMobile) {
-      this.props.history.push("/app/mobile");
-    } else {
-      this.props.history.push("/app/desktop");
     }
   }
 

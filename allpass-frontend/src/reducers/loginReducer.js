@@ -2,6 +2,7 @@ import {
   LOGIN_FAILURE,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
+  LOGOUT
 } from '../constants/loginConstants';
 
   const initialState = {jwt: null};
@@ -17,6 +18,8 @@ import {
           decodedJWT: action.decodedJWT
         };
       case LOGIN_FAILURE:
+      case LOGOUT:
+        return initialState;
       default:
         return {
           ...state

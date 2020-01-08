@@ -43,7 +43,6 @@ class LoginComponent extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log(this.detect());
     if (this.props.jwt) {
       this.props.history.push(this.detect());
     }
