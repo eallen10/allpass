@@ -18,8 +18,8 @@ class MainDrawer extends Component {
         <Drawer open={this.props.open} onClose={() => {this.props.toggleDrawer(false)}}>
             <List>
             <ListItem button>
-                <ListItemText primary={'Logs'} onClick={() => {
-                  this.props.history.push('/mobile/logs')
+                <ListItemText primary={'Home'} onClick={() => {
+                  this.props.history.push('/mobile/home')
                 }} />
             </ListItem>
             <ListItem button>

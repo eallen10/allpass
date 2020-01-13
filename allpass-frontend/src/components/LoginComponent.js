@@ -73,6 +73,7 @@ class LoginComponent extends React.Component {
           <TextField
             name="password"
             label="password"
+            type="password"
             value={this.state.value}
             onChange={this.handleChange}
           />

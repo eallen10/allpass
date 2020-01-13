@@ -63,7 +63,6 @@ public class JwtTokenAuthenticationFilter extends GenericFilterBean {
         System.out.println("header: " + httpServletRequest.getHeader(AUTHORIZATION));
         System.out.println("uri: " + httpServletRequest.getRequestURI());
         if (httpServletRequest.getRequestURI().contains("/api/login") && httpServletRequest.getHeader(AUTHORIZATION).contains("Basic ")) {
-            System.out.println("here");
             filterChain.doFilter(httpServletRequest, httpServletResponse);
             return;
         }

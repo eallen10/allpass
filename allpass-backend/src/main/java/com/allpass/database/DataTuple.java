@@ -15,7 +15,7 @@ public class DataTuple {
     @NonNull
     private String id;
     @NonNull
-    private String website, pass;
+    private String user, account, username, pass;
     @NonNull
     private Long timestamp;
 

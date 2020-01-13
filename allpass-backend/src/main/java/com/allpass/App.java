@@ -17,14 +17,4 @@ public class App {
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
     }
-
-//    @PostConstruct
-//    private void init() {
-//        Cassandra cassandra = new Cassandra();
-//        List<Row> initialRows = Cassandra.query("users", Lists.newArrayList(), "*");
-//        if(initialRows.isEmpty()) {
-//            Cassandra.createInitialUser(UUID.randomUUID().toString());
-//        }
-//    }
-
 }

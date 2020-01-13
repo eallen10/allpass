@@ -1,4 +1,4 @@
-import { GET_DATA_REQUEST, GET_DATA_SUCCESS, GET_DATA_FAILURE } from "../constants/dataConstants";
+import { GET_DATA_REQUEST, GET_DATA_SUCCESS, GET_DATA_FAILURE, DELETE_DATA_FAILURE, DELETE_DATA_SUCCESS, DELETE_DATA_REQUEST } from "../constants/dataConstants";
 
     const initialState = {};
     
@@ -11,6 +11,9 @@ import { GET_DATA_REQUEST, GET_DATA_SUCCESS, GET_DATA_FAILURE } from "../constan
             data: action.data
           };
         case GET_DATA_FAILURE:
+        case DELETE_DATA_REQUEST:
+        case DELETE_DATA_SUCCESS:
+        case DELETE_DATA_FAILURE:
         default:
           return {
             ...state

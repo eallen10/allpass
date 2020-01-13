@@ -2,7 +2,7 @@ import { TOGGLE_DRAWER } from "../constants/drawerConstants";
 
     const initialState = {
         open: false,
-        drawer: 'logs'
+        drawer: 'home'
     };
     
     const drawerReducer = (state = initialState, action) => {

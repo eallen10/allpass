@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { logout } from '../../actions/loginActions';
-import Logs from './Logs';
+import Home from './Home';
 import Account from './Account';
 import TopAppBar from './TopAppBar';
 import MainDrawer from './MainDrawer';
@@ -16,7 +16,7 @@ class MobileApp extends Component {
   UNSAFE_componentWillMount() {
     console.log('MobileApp will mount')
     if(this.props.jwt && this.props.decodedJWT.exp * 1000 > new Date().getTime()) {
-      this.props.history.push('/mobile/logs');
+      this.props.history.push('/mobile/home');
     } else {
       this.handleLogout();
     }
@@ -35,7 +35,7 @@ class MobileApp extends Component {
           <TopAppBar />
           <MainDrawer />
           <Switch> 
-            <Route path="/mobile/logs" component={Logs} />
+            <Route path="/mobile/home" component={Home} />
             <Route path="/mobile/account" component={Account} />  
           </Switch>
         </div>
