@@ -104,7 +104,7 @@ public class LoginController {
         User user = GSON.gson.fromJson(result, User.class);
 
         //if user is an admin, designate
-        if(user.getRole().equals("Administrator")) {
+        if(user.getRole().equals("ROLE_ADMIN")) {
             role = "ROLE_ADMIN";
         }
 
