@@ -15,6 +15,8 @@ import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
 import com.google.common.io.Resources;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.StringUtils;
@@ -22,6 +24,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,8 +36,7 @@ import java.io.IOException;
 import java.util.*;
 
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 /**
  * Login Controller REST API.
@@ -63,6 +65,7 @@ public class DataController {
         }
         return ResponseEntity.ok(tuples);
     }
+
     @RequestMapping(method = DELETE, value = "/deleteData/{id}")
     public ResponseEntity deleteData(HttpServletRequest httpServletRequest, @PathVariable String id) {
         DecodedJWT decodedJWT = RESTUtils.decodeJWT(RESTUtils.findJWT(httpServletRequest));
@@ -71,11 +74,34 @@ public class DataController {
         DataTuple tuple = GSON.gson.fromJson(Cassandra.query("data", Collections.singletonList(QueryBuilder.eq("id", id)), "*")
                 .get(0).getObject(0).toString(), DataTuple.class);
 
-        if(username.equals(tuple.getUser())) {
-            if(Cassandra.delete("data", id)) {
+        if (username.equals(tuple.getUser())) {
+            if (Cassandra.delete("data", id)) {
                 return ResponseEntity.ok().build();
             }
         }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    }
+
+    @RequestMapping(method = POST, path = "/addData")
+    public ResponseEntity addData(HttpServletRequest httpServletRequest, @RequestBody String json) {
+        SecurityUtils securityUtils = new SecurityUtils();
+        DecodedJWT decodedJWT = RESTUtils.decodeJWT(RESTUtils.findJWT(httpServletRequest));
+
+        //get username from JWT
+        String creatorUsername = decodedJWT.getClaim("username").asString();
+
+        JsonParser parser = new JsonParser();
+        JsonObject obj = parser.parse(json).getAsJsonObject();
+        obj.addProperty("timestamp", System.currentTimeMillis());
+        obj.addProperty("id", UUID.randomUUID().toString());
+        obj.addProperty("user", creatorUsername);
+
+        DataTuple tuple = GSON.gson.fromJson(obj, DataTuple.class);
+
+        if (Cassandra.upsert("data", tuple)) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 }

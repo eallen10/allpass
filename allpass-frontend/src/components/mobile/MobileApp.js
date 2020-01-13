@@ -6,6 +6,7 @@ import Home from './Home';
 import Account from './Account';
 import TopAppBar from './TopAppBar';
 import MainDrawer from './MainDrawer';
+import RootDialog from './RootDialog';
 
 class MobileApp extends Component {
   constructor() {
@@ -32,6 +33,7 @@ class MobileApp extends Component {
     console.log("render mobile app")
     return (
         <div id="mobileApp">
+          <RootDialog />
           <TopAppBar />
           <MainDrawer />
           <Switch> 

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {getData} from '../../actions/dataActions.js'
+import {getData} from '../../actions/dataActions.js';
 import Typography from '@material-ui/core/Typography';
 import { withCookies } from 'react-cookie';
 import LogPanels from './LogPanels';
+import Button from '@material-ui/core/Button';
+import {openDialog} from '../../actions/dialogActions';
+import { ADD_LOG_DIALOG } from '../../constants/dialogConstants.js';
 
 class Home extends Component {
   constructor() {
@@ -24,6 +27,14 @@ class Home extends Component {
           <Typography variant="h6">
             Home
           </Typography>
+          <Button size="small" color="primary" style={{float: 'right', marginTop: '-30px'}}
+            onClick={() => {
+              // console.log("delete");
+              this.props.openDialog(ADD_LOG_DIALOG);
+            }}
+              >
+              Add
+          </Button>
         </div>
         <div id="logsListDiv" style={{margin: '0 20px 0 20px'}}>
           <LogPanels />
@@ -35,7 +46,8 @@ class Home extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getData: () => dispatch(getData())
+    getData: () => dispatch(getData()),
+    openDialog: dialog => dispatch(openDialog(dialog))
   };
 };
 
