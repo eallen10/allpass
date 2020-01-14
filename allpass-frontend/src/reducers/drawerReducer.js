@@ -1,4 +1,4 @@
-import { TOGGLE_DRAWER } from "../constants/drawerConstants";
+import { TOGGLE_DRAWER, CHANGE_DRAWER } from "../constants/drawerConstants";
 
     const initialState = {
         open: false,
@@ -11,6 +11,12 @@ import { TOGGLE_DRAWER } from "../constants/drawerConstants";
           return {
             ...state,
             open: action.open
+          }
+        case CHANGE_DRAWER:
+          return {
+            ...state,
+            drawer: action.drawer,
+            open: false
           }
         default:
           return {

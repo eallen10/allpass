@@ -7,6 +7,7 @@ import Account from './Account';
 import TopAppBar from './TopAppBar';
 import MainDrawer from './MainDrawer';
 import RootDialog from './RootDialog';
+import Admin from './Admin';
 
 class MobileApp extends Component {
   constructor() {
@@ -38,7 +39,8 @@ class MobileApp extends Component {
           <MainDrawer />
           <Switch> 
             <Route path="/mobile/home" component={Home} />
-            <Route path="/mobile/account" component={Account} />  
+            <Route path="/mobile/account" component={Account} />
+            <Route path="/mobile/admin" component={Admin} />  
           </Switch>
         </div>
     );

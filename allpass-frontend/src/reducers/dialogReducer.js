@@ -4,6 +4,7 @@ import {
     OPEN_DIALOG_WITH_ARGS
   } from '../constants/dialogConstants';
 import { ADD_DATA_SUCCESS } from '../constants/dataConstants';
+import { CREATE_USER_SUCCESS } from '../constants/adminConstants';
   
   const initialState = {
     dialog: null
@@ -25,6 +26,10 @@ import { ADD_DATA_SUCCESS } from '../constants/dataConstants';
           initialState
         }
       case ADD_DATA_SUCCESS:
+        return {
+          initialState
+        }
+      case CREATE_USER_SUCCESS:
         return {
           initialState
         }

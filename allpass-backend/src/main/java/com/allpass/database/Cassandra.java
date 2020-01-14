@@ -141,8 +141,8 @@ public class Cassandra {
     }
 
     public static Boolean createInitialUser(String id) {
-        User user = new User(id, "admin", "God", "n/a", "ROLE_ADMIN", "",
-                "", "f+3s+3MsJYKKKY9g51jKDrA7O2PL4/N9OO/SdQwTnwQ=$zlCkorHYNdclIJ5Os59DHgmcYfOfSmb9oL3yUo/qRmo=",
+        User user = new User(id, "admin", "God", "root", "ROLE_ADMIN", "",
+                "", "gIIcHUGIFRpEQRuwFDNwpboTJ2RkzstMIsmO+sQB3yI=$UYBwN4RqOANkcPJybAq3Lxt6oiHZNhCpEKt9y0Apjss=",
                 System.currentTimeMillis());
         return Cassandra.upsert("users", user);
     }

@@ -23,8 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 /**
  * Login Controller REST API.
@@ -93,6 +92,7 @@ public class AdminController {
             user.setTimestamp(System.currentTimeMillis());
             user.setId(uuid);
             user.setCreator(creatorUsername);
+            user.setRole("ROLE_USER");
 
             if (Cassandra.upsert("users", user)) {
                 //return 200 response
@@ -125,7 +125,7 @@ public class AdminController {
             for (User user : users) {
                 user.setPass("");
             }
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok(users);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
@@ -141,9 +141,14 @@ public class AdminController {
      * 200 OK - the user was successfully deleted from Cassandra
      * 401 UNAUTHORIZED - request did not meet requirements
      */
-    @RequestMapping(method = POST, path = "/deleteUser")
+    @RequestMapping(method = DELETE, path = "/deleteUser")
     public ResponseEntity deleteUser(HttpServletRequest httpServletRequest, @RequestBody String json) {
         DecodedJWT decodedJWT = RESTUtils.decodeJWT(RESTUtils.findJWT(httpServletRequest));
+
+        if (decodedJWT.getClaim("username").equals("admin")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
         JsonParser parser = new JsonParser();
         JsonObject obj = parser.parse(json).getAsJsonObject();
         Set<User> users = new HashSet<>();
@@ -151,7 +156,6 @@ public class AdminController {
             List<Row> row = Cassandra.query("users", Lists.newArrayList(QueryBuilder.eq("id", obj.get("id").getAsString())), "*");
             if (!row.isEmpty() && Cassandra.delete("users", obj.get("id").getAsString())) {
                 String result = row.get(0).getString("[json]");
-                User user = GSON.gson.fromJson(result, User.class);
                 return ResponseEntity.ok().build();
             } else {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

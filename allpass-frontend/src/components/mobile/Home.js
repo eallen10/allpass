@@ -29,7 +29,6 @@ class Home extends Component {
           </Typography>
           <Button size="small" color="primary" style={{float: 'right', marginTop: '-30px'}}
             onClick={() => {
-              // console.log("delete");
               this.props.openDialog(ADD_LOG_DIALOG);
             }}
               >

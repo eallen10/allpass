@@ -69,7 +69,7 @@ export const getData = () => {
     return dispatch => {
       dispatch(deleteDataRequest());
       // fetch('https://personalpass.net/api/data/deleteData/' + id, {
-        fetch('https://personalpass.net/api/data/getData' + id, {
+        fetch('https://personalpass.net/api/data/deleteData/' + id, {
         method: 'DELETE',
         credentials: 'include'
       })

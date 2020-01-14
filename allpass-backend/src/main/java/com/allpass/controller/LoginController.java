@@ -110,6 +110,7 @@ public class LoginController {
 
         try {
             //check the provided password with the salted and hashed stored password
+            log.info("checking user credentials");
             if (SecurityUtils.check(password, user.getPass())) {
                 log.info("user verified, returning jwt");
                 String token = null;
@@ -136,6 +137,7 @@ public class LoginController {
                 httpServletResponse.addCookie(cookie);
                 return ResponseEntity.status(HttpStatus.OK).body(token);
             } else {
+                log.info("invalid credentials");
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
             }
         } catch (Exception e) {

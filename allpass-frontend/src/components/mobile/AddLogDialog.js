@@ -13,9 +13,7 @@ import {addData} from '../../actions/dataActions';
 class AddLogDialog extends React.Component {
   constructor() {
     super();
-    this.state = {
-      drawer: false
-    }
+    this.state = {}
   }
 
   handleChange = (event) => {
@@ -34,10 +32,10 @@ class AddLogDialog extends React.Component {
   render() {
     return (
       <Dialog open={this.props.dialog === 'ADD_LOG_DIALOG'} onClose={() => this.props.closeDialog()} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">Add an Account</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Add Account
+            Provide the information below to add an Account record
           </DialogContentText>
           <TextField
             autoFocus

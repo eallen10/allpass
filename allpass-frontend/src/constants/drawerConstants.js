@@ -1,1 +1,2 @@
 export const TOGGLE_DRAWER = 'TOGGLE_DRAWER';
+export const CHANGE_DRAWER = 'CHANGE_DRAWER';
