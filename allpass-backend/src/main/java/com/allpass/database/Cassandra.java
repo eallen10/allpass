@@ -83,6 +83,7 @@ public class Cassandra {
                 .ifNotExists()
                 .addPartitionKey("id", DataType.text())
                 .addColumn("username", DataType.text())
+                .addColumn("creator", DataType.text())
                 .addColumn("email", DataType.text())
                 .addColumn("timestamp", DataType.bigint())
                 .addColumn("role", DataType.text())
@@ -140,8 +141,8 @@ public class Cassandra {
     }
 
     public static Boolean createInitialUser(String id) {
-        User user = new User(id, "admin", "Administrator", "", "",
-                "", "Mlj57Wn8RMJBotmdoj4SB4jl1XmBAgo8+V9MBjdzi80=$zd5Q0aPpQ4wRkFINTMDdbv8shuczcah696ZqoeDy8Kc=",
+        User user = new User(id, "admin", "God", "n/a", "ROLE_ADMIN", "",
+                "", "f+3s+3MsJYKKKY9g51jKDrA7O2PL4/N9OO/SdQwTnwQ=$zlCkorHYNdclIJ5Os59DHgmcYfOfSmb9oL3yUo/qRmo=",
                 System.currentTimeMillis());
         return Cassandra.upsert("users", user);
     }

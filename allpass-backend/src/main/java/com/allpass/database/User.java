@@ -15,7 +15,7 @@ public class User {
     @NonNull
     private String id;
     @NonNull
-    private String username, role, fname, lname, email, pass;
+    private String username, creator, email, role, fname, lname, pass;
     @NonNull
     private Long timestamp;
 
