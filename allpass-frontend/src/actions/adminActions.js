@@ -71,7 +71,7 @@ import { CREATE_USER_REQUEST, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, GET_USER
   ) => {
     return dispatch => {
       dispatch(createUserRequest());
-      fetch('https://personalpass.net/api/admin/createUser', {
+      fetch('http://localhost:8080/api/admin/createUser', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -106,7 +106,7 @@ import { CREATE_USER_REQUEST, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, GET_USER
   export const getUsers = () => {
     return dispatch => {
       dispatch(getUsersRequest());
-      fetch('https://personalpass.net/api/admin/getUsers', {
+      fetch('http://localhost:8080/api/admin/getUsers', {
         method: 'GET',
         credentials: 'include'
       })
@@ -129,7 +129,7 @@ import { CREATE_USER_REQUEST, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, GET_USER
   export const deleteUser = id => {
     return dispatch => {
       dispatch(deleteUserRequest());
-      fetch('https://personalpass.net/api/admin/deleteUser', {
+      fetch('http://localhost:8080/api/admin/deleteUser', {
         method: 'DELETE',
         headers: {
           Accept: 'application/json',
@@ -159,7 +159,7 @@ import { CREATE_USER_REQUEST, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, GET_USER
   export const resetPass = id => {
     return dispatch => {
       dispatch(resetPassRequest());
-      let url = new URL('https://personalpass.net/api/admin/resetPass'),
+      let url = new URL('http://localhost:8080/api/admin/resetPass'),
         params = {
           id: id
         };
@@ -197,7 +197,7 @@ import { CREATE_USER_REQUEST, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, GET_USER
   ) => {
     return dispatch => {
       dispatch(editUserRequest());
-      fetch('https://personalpass.net/api/admin/editUser', {
+      fetch('http://localhost:8080/api/admin/editUser', {
         method: 'POST',
         headers: {
           Accept: 'application/json',

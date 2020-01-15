@@ -7,6 +7,7 @@ import { CREATE_USER_DIALOG } from '../../constants/dialogConstants';
 import {openDialog} from '../../actions/dialogActions';
 import {getUsers} from '../../actions/adminActions';
 import UserList from './UserList';
+import Grid from '@material-ui/core/Grid';
 
 class Admin extends Component {
   constructor() {
@@ -25,23 +26,25 @@ class Admin extends Component {
 
   render() {
     return (
-      <div id="accountContent">
-        <div id="accountTitle" style={{margin: '14px'}}>
+      <Grid container style={{marginTop: 0, padding: 16}} spacing={2}>
+        <Grid item xs={7}>
           <Typography variant="h6">
             Admin
           </Typography>
-          <Button size="small" color="primary" style={{float: 'right', marginTop: '-30px'}}
+        </Grid>
+        <Grid item xs={5}>
+          <Button size="small" color="primary"
             onClick={() => {
               this.props.openDialog(CREATE_USER_DIALOG);
             }}
-              >
-              Create User
+          >
+            Create User
           </Button>
-        </div>
-        <div id="accountDiv" style={{margin: '0 20px 0 20px'}}>
+        </Grid>
+        <Grid item xs={12}>
           <UserList />
-        </div>
-      </div>
+        </Grid>
+      </Grid>
     );
   }
 }

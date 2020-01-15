@@ -1,5 +1,5 @@
 import { GET_DATA_REQUEST, GET_DATA_SUCCESS, GET_DATA_FAILURE, DELETE_DATA_REQUEST, 
-  DELETE_DATA_SUCCESS, DELETE_DATA_FAILURE, ADD_DATA_REQUEST, ADD_DATA_SUCCESS, ADD_DATA_FAILURE} from "../constants/dataConstants";
+  DELETE_DATA_SUCCESS, DELETE_DATA_FAILURE, ADD_DATA_REQUEST, ADD_DATA_SUCCESS, ADD_DATA_FAILURE, DECRYPT_PASSWORDS} from "../constants/dataConstants";
 
 const getDataRequest = () => ({
     type: GET_DATA_REQUEST
@@ -41,11 +41,16 @@ const getDataRequest = () => ({
     error: error
   });
 
+  export const decryptPasswords = key => ({
+    type: DECRYPT_PASSWORDS,
+    key: key
+  });
+
 export const getData = () => {
     return dispatch => {
       dispatch(getDataRequest());
-      // fetch('https://personalpass.net/api/data/getData', {
-        fetch('https://personalpass.net/api/data/getData', {
+      // fetch('http://localhost:8080/api/data/getData', {
+        fetch('http://localhost:8080/api/data/getData', {
         method: 'GET',
         credentials: 'include'
       })
@@ -68,8 +73,8 @@ export const getData = () => {
   export const deleteData = id => {
     return dispatch => {
       dispatch(deleteDataRequest());
-      // fetch('https://personalpass.net/api/data/deleteData/' + id, {
-        fetch('https://personalpass.net/api/data/deleteData/' + id, {
+      // fetch('http://localhost:8080/api/data/deleteData/' + id, {
+        fetch('http://localhost:8080/api/data/deleteData/' + id, {
         method: 'DELETE',
         credentials: 'include'
       })
@@ -92,8 +97,8 @@ export const getData = () => {
   ) => {
     return dispatch => {
       dispatch(addDataRequest());
-      // fetch('https://personalpass.net/api/data/addData', {
-        fetch('https://personalpass.net/api/data/addData', {
+      // fetch('http://localhost:8080/api/data/addData', {
+        fetch('http://localhost:8080/api/data/addData', {
         method: 'POST',
         headers: {
           Accept: 'application/json',

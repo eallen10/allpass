@@ -3,7 +3,7 @@ import {
     OPEN_DIALOG,
     OPEN_DIALOG_WITH_ARGS
   } from '../constants/dialogConstants';
-import { ADD_DATA_SUCCESS } from '../constants/dataConstants';
+import { ADD_DATA_SUCCESS, DECRYPT_PASSWORDS } from '../constants/dataConstants';
 import { CREATE_USER_SUCCESS } from '../constants/adminConstants';
   
   const initialState = {
@@ -30,6 +30,10 @@ import { CREATE_USER_SUCCESS } from '../constants/adminConstants';
           initialState
         }
       case CREATE_USER_SUCCESS:
+        return {
+          initialState
+        }
+      case DECRYPT_PASSWORDS:
         return {
           initialState
         }

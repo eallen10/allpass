@@ -7,12 +7,18 @@ import LogPanels from './LogPanels';
 import Button from '@material-ui/core/Button';
 import {openDialog} from '../../actions/dialogActions';
 import { ADD_LOG_DIALOG } from '../../constants/dialogConstants.js';
+import { decryptPasswords } from '../../actions/dataActions';
+import Grid from '@material-ui/core/Grid';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import TextField from '@material-ui/core/TextField';
+import SearchIcon from '@material-ui/icons/Search';
 
 class Home extends Component {
   constructor() {
     super();
     this.state = {
-      drawer: false
+      drawer: false,
+      data: []
     }
   }
 
@@ -20,25 +26,47 @@ class Home extends Component {
     this.props.getData();
   }
 
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
   render() {
     return (
-      <div id="logsContent">
-        <div id="logsTitle" style={{margin: '19px'}}>
+      <Grid container style={{marginTop: 0, padding: 16}} spacing={2}>
+        <Grid item xs={7}>
           <Typography variant="h6">
             Home
           </Typography>
-          <Button size="small" color="primary" style={{float: 'right', marginTop: '-30px'}}
+        </Grid>
+        <Grid item xs={5}>
+          <Button size="small" color="primary" 
             onClick={() => {
               this.props.openDialog(ADD_LOG_DIALOG);
             }}
-              >
-              Add
+          >
+            Add Account
           </Button>
-        </div>
-        <div id="logsListDiv" style={{margin: '0 20px 0 20px'}}>
+        </Grid>
+        <Grid item xs={8}>
+          <TextField
+            id="input-with-icon-textfield"
+            name="query"
+            placeholder="Search"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </Grid>
+        <Grid item xs={12}>
           <LogPanels />
-        </div>
-      </div>
+        </Grid>
+      </Grid>
     );
   }
 }
@@ -46,7 +74,8 @@ class Home extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     getData: () => dispatch(getData()),
-    openDialog: dialog => dispatch(openDialog(dialog))
+    openDialog: dialog => dispatch(openDialog(dialog)),
+    decryptPasswords: key => dispatch(decryptPasswords(key))
   };
 };
 

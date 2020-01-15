@@ -22,6 +22,7 @@ class MainDrawer extends Component {
     if (this.props.decodedJWT.role === 'ROLE_ADMIN') {
       return [
         <ListItem 
+          key="admin"
           style={this.props.drawer === 'admin' ? {backgroundColor: '#ff00001a'} : {backgroundColor: 'transparent'}} 
           onClick={() => {
             this.props.changeDrawer('admin');
@@ -43,6 +44,7 @@ class MainDrawer extends Component {
         <Drawer open={this.props.open} onClose={() => {this.props.toggleDrawer(false)}}>
             <List>
               <ListItem 
+                key="home"
                 style={this.props.drawer === 'home' ? {backgroundColor: '#ff00001a'} : {backgroundColor: 'transparent'}} 
                 onClick={() => {
                   this.props.changeDrawer('home');
@@ -54,6 +56,7 @@ class MainDrawer extends Component {
                   <ListItemText primary={'Home'} />
               </ListItem>
               <ListItem 
+                key="account"
                 style={this.props.drawer === 'account' ? {backgroundColor: '#ff00001a'} : {backgroundColor: 'transparent'}} 
                 onClick={() => {
                   this.props.changeDrawer('account');

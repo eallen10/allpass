@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {closeDialog} from '../../actions/dialogActions';
 import {addData} from '../../actions/dataActions';
+import aes256 from 'aes256';
 
 class AddLogDialog extends React.Component {
   constructor() {
@@ -23,9 +24,9 @@ class AddLogDialog extends React.Component {
   };
   
   handleSubmit() {
-    const { account, username, pass } = this.state;
-    if (account && username && pass) {
-      this.props.addData(account, username, pass);
+    const { account, username, pass, mpass1, mpass2 } = this.state;
+    if (account && username && pass && mpass1 && mpass2 &&(mpass1 === mpass2)) {
+      this.props.addData(account, username, aes256.encrypt(mpass1, pass));
     }
   }
 
@@ -38,7 +39,10 @@ class AddLogDialog extends React.Component {
             Provide the information below to add an Account record
           </DialogContentText>
           <TextField
-            autoFocus
+            inputProps={{
+              autoComplete: "new-password"
+            }}
+            required
             margin="dense"
             name="account"
             label="Account Name"
@@ -46,18 +50,48 @@ class AddLogDialog extends React.Component {
             fullWidth
           />
           <TextField
-            autoFocus
+            inputProps={{
+              autoComplete: "new-password"
+            }}
+            required
             margin="dense"
             name="username"
-            label="Username"
+            label="Account Username"
             onChange={this.handleChange}
             fullWidth
           />
           <TextField
-            autoFocus
+            inputProps={{
+              autoComplete: "new-password"
+            }}
+            required
             margin="dense"
             name="pass"
-            label="Password"
+            label="Account Password"
+            type="password"
+            onChange={this.handleChange}
+            fullWidth
+          />
+          <TextField
+            inputProps={{
+              autoComplete: "new-password"
+            }}
+            required
+            margin="dense"
+            name="mpass1"
+            label="Master Password"
+            type="password"
+            onChange={this.handleChange}
+            fullWidth
+          />
+          <TextField
+            inputProps={{
+              autoComplete: "new-password"
+            }}
+            required
+            margin="dense"
+            name="mpass2"
+            label="Re-Enter Master Password"
             type="password"
             onChange={this.handleChange}
             fullWidth
