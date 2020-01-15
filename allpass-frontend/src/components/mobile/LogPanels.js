@@ -42,6 +42,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function LogPanels(props) {
+  let filteredPanels = [];
+  if (props.data) {
+    filteredPanels = props.data.filter(panel => panel.account.includes(props.q))
+  }
+
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -64,7 +69,7 @@ function LogPanels(props) {
   }
   return (
     <div className={classes.root}>
-      {props.data ? props.data.map(row => (
+      {filteredPanels.map(row => (
       // {testData ? testData.map(row => ( 
         <ExpansionPanel
           key={row.id} 
@@ -103,7 +108,6 @@ function LogPanels(props) {
           </ExpansionPanelDetails>
           <ExpansionPanelActions>
             <Button size="small" color="primary" onClick={() => {
-              // console.log("delete");
               props.deleteData(row.id)
             }}
               >
@@ -111,7 +115,7 @@ function LogPanels(props) {
             </Button>
           </ExpansionPanelActions>
         </ExpansionPanel>
-      )) : null}
+      ))}
     </div>
   );
 }

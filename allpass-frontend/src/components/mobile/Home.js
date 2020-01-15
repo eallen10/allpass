@@ -18,7 +18,7 @@ class Home extends Component {
     super();
     this.state = {
       drawer: false,
-      data: []
+      q: ''
     }
   }
 
@@ -27,9 +27,7 @@ class Home extends Component {
   }
 
   handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
+    this.setState({q: event.target.value})
   };
 
   render() {
@@ -54,6 +52,7 @@ class Home extends Component {
             id="input-with-icon-textfield"
             name="query"
             placeholder="Search"
+            onChange={this.handleChange}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -64,7 +63,7 @@ class Home extends Component {
           />
         </Grid>
         <Grid item xs={12}>
-          <LogPanels />
+          <LogPanels q={this.state.q} />
         </Grid>
       </Grid>
     );

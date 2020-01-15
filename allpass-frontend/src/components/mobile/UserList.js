@@ -40,7 +40,6 @@ const useStyles = makeStyles(theme => ({
   }));
   
   function UserList(props) {
-    console.log(props);
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
   
@@ -103,7 +102,6 @@ const useStyles = makeStyles(theme => ({
             </ExpansionPanelDetails>
             <ExpansionPanelActions>
               <Button size="small" color="primary" onClick={() => {
-                // console.log("delete");
                 props.deleteUser(row.id)
               }}
                 >
