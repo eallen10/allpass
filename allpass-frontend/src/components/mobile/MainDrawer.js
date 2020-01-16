@@ -5,12 +5,14 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
 import {toggleDrawer} from '../../actions/drawerActions';
 import HomeIcon from '@material-ui/icons/Home';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import PersonIcon from '@material-ui/icons/Person';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import {changeDrawer} from '../../actions/drawerActions';
+import Typography from '@material-ui/core/Typography';
 
 class MainDrawer extends Component {
   constructor() {
@@ -43,6 +45,9 @@ class MainDrawer extends Component {
     return (
         <Drawer open={this.props.open} onClose={() => {this.props.toggleDrawer(false)}}>
             <List>
+              <Typography variant="h6">Personal Pass</Typography>
+              <Typography variant="caption">1.0.1</Typography>
+              <Divider style={{marginTop: "20px", marginBottom: "20px"}} />
               <ListItem 
                 key="home"
                 style={this.props.drawer === 'home' ? {backgroundColor: '#ff00001a'} : {backgroundColor: 'transparent'}} 

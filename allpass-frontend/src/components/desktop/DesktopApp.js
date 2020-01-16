@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import {getData} from '../../actions/dataActions.js'
+import { Route, Switch, withRouter } from 'react-router-dom';
+import { logout } from '../../actions/loginActions';
+import Home from '../mobile/Home';
+import Account from '../mobile/Account';
+import TopAppBar from '../mobile/TopAppBar';
+import MainDrawer from '../mobile/MainDrawer';
+import RootDialog from '../mobile/RootDialog';
+import Admin from '../mobile/Admin';
 
 class DesktopApp extends Component {
   constructor() {
@@ -14,33 +15,33 @@ class DesktopApp extends Component {
     this.state = {}
   }
 
-  componentDidMount() {
-    this.props.getData();
+  UNSAFE_componentWillMount() {
+    console.log('MobileApp will mount')
+    if(this.props.jwt && this.props.decodedJWT.exp * 1000 > new Date().getTime()) {
+      this.props.history.push('/desktop/home');
+    } else {
+      this.handleLogout();
+    }
+  }
+
+  handleLogout() {
+    document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; //remove jwt cookie
+    this.props.logout(); //logout from redux state
+    this.props.history.push('/login');
   }
 
   render() {
+    console.log("render mobile app")
     return (
-        <div id="desktopApp">
-          <TableContainer style={{width: "300px"}}>
-            <Table size="small">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Website</TableCell>
-                  <TableCell align="right">Password</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {this.props.data ? this.props.data.map(row => (
-                  <TableRow key={row.name}>
-                    <TableCell component="th" scope="row">
-                      {row.website}
-                    </TableCell>
-                    <TableCell align="right">{row.pass}</TableCell>
-                  </TableRow>
-                )) : null}
-              </TableBody>
-            </Table>
-          </TableContainer>
+        <div id="mobileApp">
+          <RootDialog />
+          <TopAppBar />
+          <MainDrawer />
+          <Switch> 
+            <Route path="/desktop/home" component={Home} />
+            <Route path="/desktop/account" component={Account} />
+            <Route path="/desktop/admin" component={Admin} />  
+          </Switch>
         </div>
     );
   }
@@ -48,15 +49,21 @@ class DesktopApp extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getData: () => dispatch(getData())
+    logout: () => dispatch(logout())
   };
 };
 
-const mapStateToProps = state => ({
-  data: state.data.data
-});
+const mapStateToProps = state => {
+  return {
+    decodedJWT: state.login.decodedJWT,
+    jwt: state.login.jwt,
+    loginSuccess: state.login.success
+  };
+};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DesktopApp);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(DesktopApp)
+)

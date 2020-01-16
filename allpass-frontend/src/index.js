@@ -22,7 +22,7 @@ const theme = createMuiTheme({
   },
   status: {
     danger: '#ee0000',
-  },
+  }
 });
 
 function App() {

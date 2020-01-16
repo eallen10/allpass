@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/LoginComponent.css';
 import '../css/index.css';
-import larkspear_logo from '../images/logo.png';
+import logo from '../images/logo.png';
 import { login } from '../actions/loginActions';
 import { withCookies } from 'react-cookie';
 import PropTypes from 'prop-types';
@@ -62,7 +62,7 @@ class LoginComponent extends React.Component {
   render() {
     return (
       <div id="loginDivOuter">
-        <img src={larkspear_logo} alt="" id="loginLogo" />
+        <img src={logo} alt="" id="loginLogo" />
         <div id="loginDivInner">
           <TextField
             name="username"
