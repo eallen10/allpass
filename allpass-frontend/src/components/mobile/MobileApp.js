@@ -8,6 +8,7 @@ import TopAppBar from './TopAppBar';
 import MainDrawer from './MainDrawer';
 import RootDialog from './RootDialog';
 import Admin from './Admin';
+import SimpleSnackbar from './SimpleSnackbar.js';
 
 class MobileApp extends Component {
   constructor() {
@@ -42,6 +43,7 @@ class MobileApp extends Component {
             <Route path="/mobile/account" component={Account} />
             <Route path="/mobile/admin" component={Admin} />  
           </Switch>
+          <SimpleSnackbar />
         </div>
     );
   }
