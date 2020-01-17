@@ -1,4 +1,5 @@
 import { CREATE_USER_REQUEST, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, GET_USERS_REQUEST, GET_USERS_SUCCESS, GET_USERS_FAILURE, DELETE_USER_REQUEST, DELETE_USER_SUCCESS, DELETE_USER_FAILURE, EDIT_USER_REQUEST, EDIT_USER_SUCCESS, RESET_PASS_REQUEST, RESET_PASS_SUCCESS, RESET_PASS_FAILURE, EDIT_USER_FAILURE } from "../constants/adminConstants";
+import config from '../../src/config'
 
   const createUserRequest = () => ({
     type: CREATE_USER_REQUEST
@@ -71,7 +72,7 @@ import { CREATE_USER_REQUEST, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, GET_USER
   ) => {
     return dispatch => {
       dispatch(createUserRequest());
-      fetch('http://localhost:8080/api/admin/createUser', {
+      fetch(config.api.networkInterface + '/api/admin/createUser', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -106,7 +107,7 @@ import { CREATE_USER_REQUEST, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, GET_USER
   export const getUsers = () => {
     return dispatch => {
       dispatch(getUsersRequest());
-      fetch('http://localhost:8080/api/admin/getUsers', {
+      fetch(config.api.networkInterface + '/api/admin/getUsers', {
         method: 'GET',
         credentials: 'include'
       })
@@ -129,7 +130,7 @@ import { CREATE_USER_REQUEST, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, GET_USER
   export const deleteUser = id => {
     return dispatch => {
       dispatch(deleteUserRequest());
-      fetch('http://localhost:8080/api/admin/deleteUser', {
+      fetch(config.api.networkInterface + '/api/admin/deleteUser', {
         method: 'DELETE',
         headers: {
           Accept: 'application/json',
@@ -159,7 +160,7 @@ import { CREATE_USER_REQUEST, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, GET_USER
   export const resetPass = id => {
     return dispatch => {
       dispatch(resetPassRequest());
-      let url = new URL('http://localhost:8080/api/admin/resetPass'),
+      let url = new URL(config.api.networkInterface + '/api/admin/resetPass'),
         params = {
           id: id
         };
@@ -197,7 +198,7 @@ import { CREATE_USER_REQUEST, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, GET_USER
   ) => {
     return dispatch => {
       dispatch(editUserRequest());
-      fetch('http://localhost:8080/api/admin/editUser', {
+      fetch(config.api.networkInterface + '/api/admin/editUser', {
         method: 'POST',
         headers: {
           Accept: 'application/json',

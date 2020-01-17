@@ -5,6 +5,7 @@ import {
     LOGOUT
   } from '../constants/loginConstants';
   import auth0 from 'jsonwebtoken';
+  import config from '../../src/config'
   
   const loginRequest = username => ({
     type: LOGIN_REQUEST,
@@ -31,8 +32,7 @@ import {
   export const login = (username, password) => {
     return dispatch => {
       dispatch(loginRequest(username));
-      // fetch('http://localhost:8080/api/login', {
-        fetch('http://localhost:8080/api/login', {
+        fetch(config.api.networkInterface + '/api/login', {
         method: 'POST',
         headers: {
           Authorization: 'Basic ' + btoa(username + ':' + password)

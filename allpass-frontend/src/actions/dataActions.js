@@ -1,5 +1,6 @@
 import { GET_DATA_REQUEST, GET_DATA_SUCCESS, GET_DATA_FAILURE, DELETE_DATA_REQUEST, 
   DELETE_DATA_SUCCESS, DELETE_DATA_FAILURE, ADD_DATA_REQUEST, ADD_DATA_SUCCESS, ADD_DATA_FAILURE, DECRYPT_PASSWORDS} from "../constants/dataConstants";
+import config from '../../src/config'
 
 const getDataRequest = () => ({
     type: GET_DATA_REQUEST
@@ -49,8 +50,7 @@ const getDataRequest = () => ({
 export const getData = () => {
     return dispatch => {
       dispatch(getDataRequest());
-      // fetch('http://localhost:8080/api/data/getData', {
-        fetch('http://localhost:8080/api/data/getData', {
+        fetch(config.api.networkInterface + '/api/data/getData', {
         method: 'GET',
         credentials: 'include'
       })
@@ -73,8 +73,7 @@ export const getData = () => {
   export const deleteData = id => {
     return dispatch => {
       dispatch(deleteDataRequest());
-      // fetch('http://localhost:8080/api/data/deleteData/' + id, {
-        fetch('http://localhost:8080/api/data/deleteData/' + id, {
+        fetch(config.api.networkInterface + '/api/data/deleteData/' + id, {
         method: 'DELETE',
         credentials: 'include'
       })
@@ -97,8 +96,7 @@ export const getData = () => {
   ) => {
     return dispatch => {
       dispatch(addDataRequest());
-      // fetch('http://localhost:8080/api/data/addData', {
-        fetch('http://localhost:8080/api/data/addData', {
+        fetch(config.api.networkInterface + '/api/data/addData', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
