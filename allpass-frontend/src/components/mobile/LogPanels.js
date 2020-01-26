@@ -14,14 +14,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import {openDialog} from '../../actions/dialogActions';
-import { DECRYPT_DIALOG } from '../../constants/dialogConstants.js';
+import { DECRYPT_DIALOG, YOU_SURE_DIALOG } from '../../constants/dialogConstants.js';
 import aes256 from 'aes256';
-
-const testData = 
-  [
-    {account: 'google', username: 'username', pass: 'password' }
-  ]
-
+import InfiniteScroll from 'react-infinite-scroller';
+import {openVerifyDialog} from '../../actions/dialogActions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -44,7 +40,7 @@ const useStyles = makeStyles(theme => ({
 function LogPanels(props) {
   let filteredPanels = [];
   if (props.data) {
-    filteredPanels = props.data.filter(panel => panel.account.includes(props.q))
+    filteredPanels = props.data.filter(panel => panel.account.includes(props.q));
   }
 
   const classes = useStyles();
@@ -70,7 +66,6 @@ function LogPanels(props) {
   return (
     <div className={classes.root}>
       {filteredPanels.map(row => (
-      // {testData ? testData.map(row => ( 
         <ExpansionPanel
           key={row.id} 
           elevation={3} 
@@ -108,7 +103,7 @@ function LogPanels(props) {
           </ExpansionPanelDetails>
           <ExpansionPanelActions>
             <Button size="small" color="primary" onClick={() => {
-              props.deleteData(row.id)
+              props.openVerifyDialog('Delete Record', 'Are you sure you wish to delete ' + row.account + "?", props.deleteData, row)
             }}
               >
               Delete
@@ -124,7 +119,8 @@ const mapDispatchToProps = dispatch => {
     return {
       getData: () => dispatch(getData()),
       deleteData: id => dispatch(deleteData(id)),
-      openDialog: dialog => dispatch(openDialog(dialog))
+      openDialog: dialog => dispatch(openDialog(dialog)),
+      openVerifyDialog: (title, message, action, object) => dispatch(openVerifyDialog(title, message, action, object))
     };
   };
   

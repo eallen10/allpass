@@ -21,7 +21,7 @@ class MainDrawer extends Component {
   }
 
   adminView = () => {
-    if (this.props.decodedJWT.role === 'ROLE_ADMIN') {
+    if (this.props.decodedJWT && this.props.decodedJWT.role === 'ROLE_ADMIN') {
       return [
         <ListItem 
           key="admin"

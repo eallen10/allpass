@@ -7,6 +7,7 @@ import { assignJWT } from '../actions/loginActions';
 import { logout } from '../actions/loginActions';
 import { connect } from 'react-redux';
 import LoginComponent from './LoginComponent'
+import CreateNewUser from './CreateNewUser';
 
 class AppComponent extends React.Component {
 
@@ -27,6 +28,7 @@ class AppComponent extends React.Component {
           <Route path="/login" component={LoginComponent} />        
           <Route path="/mobile" component={MobileApp} />
           <Route path="/desktop" component={DesktopApp} />
+          <Route path="/newUser" component={CreateNewUser} />
         </Switch>
       </div>
     );

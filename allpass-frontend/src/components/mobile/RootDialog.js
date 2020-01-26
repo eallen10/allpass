@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import {
   ADD_LOG_DIALOG,
   CREATE_USER_DIALOG,
-  DECRYPT_DIALOG
+  DECRYPT_DIALOG,
+  YOU_SURE_DIALOG
 } from '../../constants/dialogConstants';
 import AddLogDialog from './AddLogDialog';
 import CreateUserDialog from './CreateUserDialog';
 import DecryptDialog from './DecryptDialog';
+import YouSureDialog from './YouSureDialog';
 
 class RootDialog extends React.Component {
   getDialog = () => {
@@ -18,6 +20,8 @@ class RootDialog extends React.Component {
         return <CreateUserDialog />;
       case DECRYPT_DIALOG:
         return <DecryptDialog />;
+      case YOU_SURE_DIALOG:
+        return <YouSureDialog />;
       default:
         return null; //required because render() must return something
     }

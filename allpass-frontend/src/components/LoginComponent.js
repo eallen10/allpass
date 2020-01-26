@@ -35,6 +35,10 @@ class LoginComponent extends React.Component {
       this.props.login(username, password);
     }
   }
+  handleCreateAccount() {
+    console.log("submit create account")
+    this.props.history.push("/newUser");
+  }
 
   detect = () => {
     if(isMobile) {
@@ -84,6 +88,13 @@ class LoginComponent extends React.Component {
             onClick={() => { this.handleSubmit()}}
           >
             Login
+          </Button>
+          <Button 
+            className="loginButton"
+            color="primary"
+            onClick={() => { this.handleCreateAccount()}}
+          >
+            Create Account
           </Button>
         </div>
       </div>

@@ -103,6 +103,43 @@ import config from '../../src/config'
         });
     };
   };
+
+  export const createNewUser = (
+    fname, lname, email, username, pass1, pass2
+  ) => {
+    return dispatch => {
+      dispatch(createUserRequest());
+      fetch(config.api.networkInterface + '/api/createNewUser', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'content-type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          fname, lname, email, username, pass1, pass2
+        })
+      })
+        .then(response => {
+          if (response.status !== 200) {
+            return response.text();
+          } else {
+            return;
+          }
+        })
+        .then(response => {
+          if (typeof response !== 'string') {
+            dispatch(getUsers());
+            dispatch(createUserSuccess());
+          } else {
+            dispatch(createUserFailure(response));
+          }
+        })
+        .catch(error => {
+          dispatch(createUserFailure(error.message));
+        });
+    };
+  };
   
   export const getUsers = () => {
     return dispatch => {

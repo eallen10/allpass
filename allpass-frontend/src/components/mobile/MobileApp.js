@@ -34,7 +34,7 @@ class MobileApp extends Component {
   render() {
     console.log("render mobile app")
     return (
-        <div id="mobileApp">
+        <div id="mobileApp" style={{overflowX: "hidden", overflowY: "auto", height: "100vh"}} onScroll={() => console.log('scroll')}>
           <RootDialog />
           <TopAppBar />
           <MainDrawer />

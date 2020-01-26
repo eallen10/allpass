@@ -1,7 +1,8 @@
 import {
     CLOSE_DIALOG,
     OPEN_DIALOG,
-    OPEN_DIALOG_WITH_ARGS
+    OPEN_VERIFY_DIALOG,
+    YOU_SURE_DIALOG
   } from '../constants/dialogConstants';
   
   export const openDialog = dialog => ({
@@ -9,10 +10,13 @@ import {
     dialog: dialog
   });
   
-  export const openDialogWithArgs = (dialog, args) => ({
-    type: OPEN_DIALOG_WITH_ARGS,
-    dialog: dialog,
-    args: args
+  export const openVerifyDialog = (title, message, action, object) => ({
+    type: OPEN_VERIFY_DIALOG,
+    dialog: YOU_SURE_DIALOG,
+    title: title,
+    message: message,
+    action: action,
+    object: object
   });
   
   export const closeDialog = () => ({

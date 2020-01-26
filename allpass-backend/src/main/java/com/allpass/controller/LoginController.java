@@ -80,7 +80,7 @@ public class LoginController {
                         .withClaim("id", id)
                         .withClaim("role", "ROLE_ADMIN")
                         .withExpiresAt(new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000 /*1 day in milliseconds*/))
-                        .sign(Algorithm.HMAC256(Resources.toString(Resources.getResource("secret.key"), Charsets.UTF_8)));
+                        .sign(Algorithm.HMAC256(Resources.toString(Resources.getResource("jwtSecret.key"), Charsets.UTF_8)));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -124,7 +124,7 @@ public class LoginController {
                             .withClaim("fname", user.getFname())
                             .withClaim("lname", user.getLname())
                             .withExpiresAt(new Date(System.currentTimeMillis() + 10000000 /*1 day in milliseconds*/))
-                            .sign(Algorithm.HMAC256(Resources.toString(Resources.getResource("secret.key"), Charsets.UTF_8)));
+                            .sign(Algorithm.HMAC256(Resources.toString(Resources.getResource("jwtSecret.key"), Charsets.UTF_8)));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

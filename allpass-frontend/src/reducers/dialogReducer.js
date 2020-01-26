@@ -1,9 +1,9 @@
 import {
     CLOSE_DIALOG,
     OPEN_DIALOG,
-    OPEN_DIALOG_WITH_ARGS
+    OPEN_VERIFY_DIALOG
   } from '../constants/dialogConstants';
-import { ADD_DATA_SUCCESS, DECRYPT_PASSWORDS } from '../constants/dataConstants';
+import { ADD_DATA_SUCCESS, DECRYPT_PASSWORDS, DELETE_DATA_SUCCESS } from '../constants/dataConstants';
 import { CREATE_USER_SUCCESS } from '../constants/adminConstants';
   
   const initialState = {
@@ -16,16 +16,23 @@ import { CREATE_USER_SUCCESS } from '../constants/adminConstants';
         return {
           dialog: action.dialog
         };
-      case OPEN_DIALOG_WITH_ARGS:
+      case OPEN_VERIFY_DIALOG:
         return {
           dialog: action.dialog,
-          args: action.args
+          title: action.title,
+          message: action.message,
+          action: action.action,
+          object: action.object
         };
       case CLOSE_DIALOG:
         return {
           initialState
         }
       case ADD_DATA_SUCCESS:
+        return {
+          initialState
+        }
+      case DELETE_DATA_SUCCESS:
         return {
           initialState
         }

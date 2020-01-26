@@ -49,7 +49,7 @@ public class RESTUtils {
      */
     public static DecodedJWT decodeJWT(String jwtString) {
         try {
-            String secret = Resources.toString(Resources.getResource("secret.key"), Charsets.UTF_8);
+            String secret = Resources.toString(Resources.getResource("jwtSecret.key"), Charsets.UTF_8);
             return JWT.require(Algorithm.HMAC256(secret))
                     .withIssuer("CATSS")
                     .build()
@@ -65,9 +65,9 @@ public class RESTUtils {
      * @param jwtString the JWT String representation
      * @return the validated {@link DecodedJWT}
      */
-    public static DecodedJWT decodeServerJWT(String jwtString) {
+    public static DecodedJWT decodeNewUserJWT(String jwtString) {
         try {
-            String secret = Resources.toString(Resources.getResource("authPub.key"), Charsets.UTF_8);
+            String secret = Resources.toString(Resources.getResource("newUserJwtSecret.key"), Charsets.UTF_8);
             System.out.println(secret);
             return JWT.require(Algorithm.HMAC256(secret))
                     .withIssuer("CATSS")

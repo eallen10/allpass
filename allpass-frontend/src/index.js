@@ -31,7 +31,7 @@ function App() {
       <BrowserRouter>
         <CookiesProvider>
           <Provider store={store}>
-            <AppComponent />
+            <AppComponent onScroll={() => console.log('scroll')} />
           </Provider>
         </CookiesProvider>
       </BrowserRouter>

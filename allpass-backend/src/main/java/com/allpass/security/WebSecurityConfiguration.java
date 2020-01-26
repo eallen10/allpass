@@ -59,7 +59,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         /* the secret key used to signed the JWT token is known exclusively by the server.
          With Nimbus JOSE implementation, it must be at least 256 characters longs.
          */
-        String secret = Resources.toString(Resources.getResource("secret.key"), Charsets.UTF_8);
+        String secret = Resources.toString(Resources.getResource("jwtSecret.key"), Charsets.UTF_8);
 
         httpSecurity
                 /*

@@ -16,7 +16,7 @@ class Admin extends Component {
   }
 
   componentWillMount() {
-    if(this.props.decodedJWT.role !== 'ROLE_ADMIN') {
+    if(this.props.decodedJWT && this.props.decodedJWT.role !== 'ROLE_ADMIN') {
       this.props.history.push('/mobile/home');
     } else {
       this.props.getUsers();

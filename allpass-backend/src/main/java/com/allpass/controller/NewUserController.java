@@ -56,65 +56,52 @@ public class NewUserController {
      * @param httpServletRequest the HTTP request
      * @param json               the new user information
      * @return {@link ResponseEntity} with an appropriate response code:
-     * 200 OK - the report was successfully saved to Cassandra
+     * 200 OK - the user was created successfully
      * 500 INTERNAL SERVER ERROR - an error occurred
-     * 401 UNAUTHORIZED - request did not meet requirements
      */
-    @RequestMapping(method = POST, path = "/createUser")
-    public ResponseEntity createUser(HttpServletRequest httpServletRequest, @RequestBody String json) {
+    @RequestMapping(method = POST, path = "/createNewUser")
+    public ResponseEntity createNewUser(HttpServletRequest httpServletRequest, @RequestBody String json) {
         SecurityUtils securityUtils = new SecurityUtils();
-        DecodedJWT decodedJWT = RESTUtils.decodeJWT(RESTUtils.findJWT(httpServletRequest));
-        if (decodedJWT.getClaim("role").asString().equals("ROLE_ADMIN")) {
+        String uuid = UUID.randomUUID().toString();
 
-            String uuid = UUID.randomUUID().toString();
+        JsonParser parser = new JsonParser();
+        JsonObject obj = parser.parse(json).getAsJsonObject();
 
-            //get username from JWT
-            String creatorUsername = decodedJWT.getClaim("username").asString();
+        //check username against existing usernames and return FORBIDDEN if already exists
+        if (!checkUsername(obj.get("username").getAsString())) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
 
-            JsonParser parser = new JsonParser();
-            JsonObject obj = parser.parse(json).getAsJsonObject();
+        if (!obj.get("pass1").getAsString().equals(obj.get("pass2").getAsString())) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
 
-            //check username against existing usernames and return FORBIDDEN if already exists
-            if (!checkUsername(obj.get("username").getAsString())) {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Username already exists.");
-            }
+        if (obj.get("pass1").getAsString().length() < 8) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
 
-            if (!obj.get("pass1").getAsString().equals(obj.get("pass2").getAsString())) {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Passwords do not match.");
-            }
+        obj.addProperty("pass", obj.get("pass1").getAsString());
+        obj.remove("pass1");
+        obj.remove("pass2");
 
-            if (obj.get("pass1").getAsString().length() < 8) {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Password must be at least 8 characters.");
-            }
+        //create User object from json data
+        User user = GSON.gson.fromJson(obj, User.class);
 
-            obj.addProperty("pass", obj.get("pass1").getAsString());
-            obj.remove("pass1");
-            obj.remove("pass2");
+        //set password of user to hashed value of given password
+        try {
+            user.setPass(securityUtils.getSaltedHash(user.getPass()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-            //create User object from json data
-            User user = GSON.gson.fromJson(obj, User.class);
+        user.setTimestamp(System.currentTimeMillis());
+        user.setId(uuid);
+        user.setRole("ROLE_USER");
 
-            //set password of user to hashed value of given password
-            try {
-                user.setPass(securityUtils.getSaltedHash(user.getPass()));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            user.setTimestamp(System.currentTimeMillis());
-            user.setId(uuid);
-            user.setCreator(creatorUsername);
-            user.setRole("ROLE_USER");
-
-            if (Cassandra.upsert("users", user)) {
-                //return 200 response
-                return ResponseEntity.ok().build();
-//                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-            } else {
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-            }
+        if (Cassandra.upsert("users", user)) {
+            return ResponseEntity.ok().build();
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
