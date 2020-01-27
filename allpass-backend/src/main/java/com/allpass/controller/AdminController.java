@@ -5,10 +5,14 @@ import com.allpass.database.User;
 import com.allpass.utils.GSON;
 import com.allpass.utils.RESTUtils;
 import com.allpass.utils.SecurityUtils;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
+import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
+import com.google.common.io.Resources;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.extern.log4j.Log4j2;
@@ -202,7 +206,35 @@ public class AdminController {
             log.error(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+    }
 
+    /**
+     * Generates an api key to create a new user
+     *
+     * @param httpServletRequest the HTTP request
+     * @return {@link ResponseEntity} with an appropriate response code:
+     * 200 OK - the api key was created
+     * 500 INTERNAL SERVER ERROR - an error occurred
+     * 401 UNAUTHORIZED - request did not meet requirements
+     */
+    @RequestMapping(method = POST, path = "/generateApiKey")
+    public ResponseEntity generateApiKey(HttpServletRequest httpServletRequest) {
+        DecodedJWT decodedJWT = RESTUtils.decodeJWT(RESTUtils.findJWT(httpServletRequest));
+        String role = decodedJWT.getClaim("role").asString();
+        try {
+            if (role.equals("ROLE_ADMIN")) {
+                String token = JWT.create()
+                        .withIssuer("CATSS")
+                        .withExpiresAt(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 /*1 day in milliseconds*/))
+                        .sign(Algorithm.HMAC256(Resources.toString(Resources.getResource("newUserJwtSecret.key"), Charsets.UTF_8)));
+                return ResponseEntity.ok(token);
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+        } catch (Exception e) {
+            log.error(e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     public boolean checkUsername(String username) {

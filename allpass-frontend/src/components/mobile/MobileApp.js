@@ -16,8 +16,7 @@ class MobileApp extends Component {
     this.state = {}
   }
 
-  UNSAFE_componentWillMount() {
-    console.log('MobileApp will mount')
+  componentWillMount() {
     if(this.props.jwt && this.props.decodedJWT.exp * 1000 > new Date().getTime()) {
       this.props.history.push('/mobile/home');
     } else {
@@ -32,9 +31,8 @@ class MobileApp extends Component {
   }
 
   render() {
-    console.log("render mobile app")
     return (
-        <div id="mobileApp" style={{overflowX: "hidden", overflowY: "auto", height: "100vh"}} onScroll={() => console.log('scroll')}>
+        <div id="mobileApp">
           <RootDialog />
           <TopAppBar />
           <MainDrawer />

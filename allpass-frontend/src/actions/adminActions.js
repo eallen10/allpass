@@ -1,4 +1,4 @@
-import { CREATE_USER_REQUEST, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, GET_USERS_REQUEST, GET_USERS_SUCCESS, GET_USERS_FAILURE, DELETE_USER_REQUEST, DELETE_USER_SUCCESS, DELETE_USER_FAILURE, EDIT_USER_REQUEST, EDIT_USER_SUCCESS, RESET_PASS_REQUEST, RESET_PASS_SUCCESS, RESET_PASS_FAILURE, EDIT_USER_FAILURE } from "../constants/adminConstants";
+import { CREATE_USER_REQUEST, CREATE_USER_SUCCESS, CREATE_USER_FAILURE, GET_USERS_REQUEST, GET_USERS_SUCCESS, GET_USERS_FAILURE, DELETE_USER_REQUEST, DELETE_USER_SUCCESS, DELETE_USER_FAILURE, EDIT_USER_REQUEST, EDIT_USER_SUCCESS, RESET_PASS_REQUEST, RESET_PASS_SUCCESS, RESET_PASS_FAILURE, EDIT_USER_FAILURE, CREATE_API_KEY_REQUEST, CREATE_API_KEY_SUCCESS, CREATE_API_KEY_FAILURE } from "../constants/adminConstants";
 import config from '../../src/config'
 
   const createUserRequest = () => ({
@@ -66,6 +66,19 @@ import config from '../../src/config'
   const resetPassSuccess = () => ({
     type: RESET_PASS_FAILURE
   });
+
+  const createApiKeyRequest = () => ({
+    type: CREATE_API_KEY_REQUEST
+  });
+  
+  const createApiKeySuccess = response => ({
+    apiKey: response,
+    type: CREATE_API_KEY_SUCCESS
+  });
+  
+  const createApiKeyFailure = () => ({
+    type: CREATE_API_KEY_FAILURE
+  });
   
   export const createUser = (
     fname, lname, email, username, pass1, pass2
@@ -73,43 +86,6 @@ import config from '../../src/config'
     return dispatch => {
       dispatch(createUserRequest());
       fetch(config.api.networkInterface + '/api/admin/createUser', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'content-type': 'application/json'
-        },
-        credentials: 'include',
-        body: JSON.stringify({
-          fname, lname, email, username, pass1, pass2
-        })
-      })
-        .then(response => {
-          if (response.status !== 200) {
-            return response.text();
-          } else {
-            return;
-          }
-        })
-        .then(response => {
-          if (typeof response !== 'string') {
-            dispatch(getUsers());
-            dispatch(createUserSuccess());
-          } else {
-            dispatch(createUserFailure(response));
-          }
-        })
-        .catch(error => {
-          dispatch(createUserFailure(error.message));
-        });
-    };
-  };
-
-  export const createNewUser = (
-    fname, lname, email, username, pass1, pass2
-  ) => {
-    return dispatch => {
-      dispatch(createUserRequest());
-      fetch(config.api.networkInterface + '/api/createNewUser', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -266,6 +242,26 @@ import config from '../../src/config'
         })
         .catch(error => {
           dispatch(editUserFailure(error));
+        });
+    };
+  };
+
+  export const generateApiKey = () => {
+    return dispatch => {
+      dispatch(createApiKeyRequest());
+      fetch(config.api.networkInterface + '/api/admin/generateApiKey', {
+        method: 'POST',
+        credentials: 'include'
+      })
+        .then(response => {
+          if (response.status !== 200) {
+            dispatch(createApiKeyFailure());
+          } else {
+            response.text().then(response => dispatch(createApiKeySuccess(response)));
+          }
+        })
+        .catch(error => {
+          dispatch(createApiKeyFailure(error.message));
         });
     };
   };

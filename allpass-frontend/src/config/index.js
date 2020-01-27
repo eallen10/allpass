@@ -5,9 +5,14 @@ export const appConfig = {
     networkInterface: ({
       development: 'http://localhost:8080',
       production: 'https://personalpass.net',
-    })[env],
-    // add more here
+    })[env]
   },
+  frontend: {
+    networkInterface: ({
+      development: 'http://localhost:3000',
+      production: 'https://personalpass.net',
+    })[env]
+  }
 }
 
 export default appConfig

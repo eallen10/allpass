@@ -21,6 +21,7 @@ import org.apache.commons.codec.binary.StringUtils;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -59,8 +60,13 @@ public class NewUserController {
      * 200 OK - the user was created successfully
      * 500 INTERNAL SERVER ERROR - an error occurred
      */
-    @RequestMapping(method = POST, path = "/createNewUser")
-    public ResponseEntity createNewUser(HttpServletRequest httpServletRequest, @RequestBody String json) {
+    @RequestMapping(method = POST, path = "/createNewUser/{apiKey}")
+    public ResponseEntity createNewUser(HttpServletRequest httpServletRequest, @RequestBody String json, @PathVariable String apiKey) {
+        System.out.println(json);
+        System.out.println(apiKey);
+
+        RESTUtils.decodeNewUserJWT(apiKey);
+
         SecurityUtils securityUtils = new SecurityUtils();
         String uuid = UUID.randomUUID().toString();
 
@@ -69,15 +75,15 @@ public class NewUserController {
 
         //check username against existing usernames and return FORBIDDEN if already exists
         if (!checkUsername(obj.get("username").getAsString())) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("username already exists");
         }
 
         if (!obj.get("pass1").getAsString().equals(obj.get("pass2").getAsString())) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("passwords do not match");
         }
 
         if (obj.get("pass1").getAsString().length() < 8) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("password must have more than 8 characters");
         }
 
         obj.addProperty("pass", obj.get("pass1").getAsString());
@@ -96,6 +102,7 @@ public class NewUserController {
 
         user.setTimestamp(System.currentTimeMillis());
         user.setId(uuid);
+        user.setCreator("apiKey");
         user.setRole("ROLE_USER");
 
         if (Cassandra.upsert("users", user)) {

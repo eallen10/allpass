@@ -68,7 +68,6 @@ public class RESTUtils {
     public static DecodedJWT decodeNewUserJWT(String jwtString) {
         try {
             String secret = Resources.toString(Resources.getResource("newUserJwtSecret.key"), Charsets.UTF_8);
-            System.out.println(secret);
             return JWT.require(Algorithm.HMAC256(secret))
                     .withIssuer("CATSS")
                     .build()

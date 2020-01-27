@@ -4,7 +4,7 @@ import {
     OPEN_VERIFY_DIALOG
   } from '../constants/dialogConstants';
 import { ADD_DATA_SUCCESS, DECRYPT_PASSWORDS, DELETE_DATA_SUCCESS } from '../constants/dataConstants';
-import { CREATE_USER_SUCCESS } from '../constants/adminConstants';
+import { CREATE_USER_SUCCESS, DELETE_USER_SUCCESS } from '../constants/adminConstants';
   
   const initialState = {
     dialog: null
@@ -37,6 +37,10 @@ import { CREATE_USER_SUCCESS } from '../constants/adminConstants';
           initialState
         }
       case CREATE_USER_SUCCESS:
+        return {
+          initialState
+        }
+      case DELETE_USER_SUCCESS:
         return {
           initialState
         }

@@ -16,7 +16,6 @@ class DesktopApp extends Component {
   }
 
   UNSAFE_componentWillMount() {
-    console.log('MobileApp will mount')
     if(this.props.jwt && this.props.decodedJWT.exp * 1000 > new Date().getTime()) {
       this.props.history.push('/desktop/home');
     } else {
@@ -31,7 +30,6 @@ class DesktopApp extends Component {
   }
 
   render() {
-    console.log("render mobile app")
     return (
         <div id="mobileApp">
           <RootDialog />

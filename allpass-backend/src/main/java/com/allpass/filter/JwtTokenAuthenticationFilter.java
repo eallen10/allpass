@@ -66,6 +66,10 @@ public class JwtTokenAuthenticationFilter extends GenericFilterBean {
             filterChain.doFilter(httpServletRequest, httpServletResponse);
             return;
         }
+        if (httpServletRequest.getRequestURI().contains("/api/createNewUser")) {
+            filterChain.doFilter(httpServletRequest, httpServletResponse);
+            return;
+        }
 
         //get JWT from http request
         String jwt = findJWT(httpServletRequest);

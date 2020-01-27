@@ -13,7 +13,10 @@ import {
     EDIT_USER_FAILURE,
     RESET_PASS_REQUEST,
     RESET_PASS_FAILURE,
-    RESET_PASS_SUCCESS
+    RESET_PASS_SUCCESS,
+    CREATE_API_KEY_REQUEST,
+    CREATE_API_KEY_FAILURE,
+    CREATE_API_KEY_SUCCESS
   } from '../constants/adminConstants';
   
   const initialState = {};
@@ -79,6 +82,19 @@ import {
           ...state
         };
       case RESET_PASS_FAILURE:
+        return {
+          ...state
+        };
+      case CREATE_API_KEY_REQUEST:
+        return {
+          ...state
+        };
+      case CREATE_API_KEY_SUCCESS:
+        return {
+          apiKey: action.apiKey,
+          ...state
+        };
+      case CREATE_API_KEY_FAILURE:
         return {
           ...state
         };

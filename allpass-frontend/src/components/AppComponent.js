@@ -12,23 +12,19 @@ import CreateNewUser from './CreateNewUser';
 class AppComponent extends React.Component {
 
   UNSAFE_componentWillMount() {
-    console.log('AppComponent will mount')
-    // TODO: need to validate jwt
-    console.log('(AppComponent will mount) cookie jwt: ' + this.props.cookies.get('jwt'))
     if (this.props.cookies.get('jwt')) {
       this.props.assignJWT(this.props.cookies.get('jwt'));
     }
-    this.props.history.push('/login')
   }
 
   render() {
     return (
       <div id="app">
-        <Switch> 
-          <Route path="/login" component={LoginComponent} />        
+        <Switch>
           <Route path="/mobile" component={MobileApp} />
           <Route path="/desktop" component={DesktopApp} />
-          <Route path="/newUser" component={CreateNewUser} />
+          <Route path="/newUser/:id" component={CreateNewUser} />
+          <Route path="/login" path="/" component={LoginComponent} />
         </Switch>
       </div>
     );

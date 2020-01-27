@@ -29,15 +29,10 @@ class LoginComponent extends React.Component {
     });
   };
   handleSubmit() {
-    console.log("submit login")
     const { username, password } = this.state;
     if (username && password) {
       this.props.login(username, password);
     }
-  }
-  handleCreateAccount() {
-    console.log("submit create account")
-    this.props.history.push("/newUser");
   }
 
   detect = () => {
@@ -49,15 +44,12 @@ class LoginComponent extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log('LoginComponent did update')
     if (this.props.jwt && this.props.decodedJWT.exp * 1000 > new Date().getTime()) {
-      console.log('jwt detected, pushing' + this.detect())
       this.props.history.push(this.detect());
     }
   }
 
   UNSAFE_componentWillMount() {
-    console.log('LoginComponent will mount')
     //TODO: need to validate jwt
     if(this.props.jwt && this.props.decodedJWT.exp * 1000 > new Date().getTime()) {
       this.props.history.push(this.detect());
@@ -88,13 +80,6 @@ class LoginComponent extends React.Component {
             onClick={() => { this.handleSubmit()}}
           >
             Login
-          </Button>
-          <Button 
-            className="loginButton"
-            color="primary"
-            onClick={() => { this.handleCreateAccount()}}
-          >
-            Create Account
           </Button>
         </div>
       </div>

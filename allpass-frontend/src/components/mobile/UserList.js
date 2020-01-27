@@ -15,6 +15,7 @@ import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
 import {deleteUser} from '../../actions/adminActions';
+import {openVerifyDialog} from '../../actions/dialogActions';
 
 const testData = 
   [
@@ -102,8 +103,8 @@ const useStyles = makeStyles(theme => ({
             </ExpansionPanelDetails>
             <ExpansionPanelActions>
               <Button size="small" color="primary" onClick={() => {
-                props.deleteUser(row.id)
-              }}
+                props.openVerifyDialog('Delete User', 'Are you sure you wish to delete ' + row.fname + "?", props.deleteUser, row)
+            }}
                 >
                 Delete
               </Button>
@@ -117,7 +118,8 @@ const useStyles = makeStyles(theme => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-      deleteUser: id => dispatch(deleteUser(id))
+      deleteUser: id => dispatch(deleteUser(id)),
+      openVerifyDialog: (title, message, action, object) => dispatch(openVerifyDialog(title, message, action, object))
     };
   };
   

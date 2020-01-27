@@ -18,8 +18,9 @@ public class AppTest {
                     .withExpiresAt(new Date(System.currentTimeMillis() + 10000000 /*1 day in milliseconds*/))
                     .sign(Algorithm.HMAC256(Resources.toString(Resources.getResource("newUserJwtSecret.key"), Charsets.UTF_8)));
 
-            String secret = Resources.toString(Resources.getResource("newUserJwtSecret.key"), Charsets.UTF_8);
-            JWT.require(Algorithm.HMAC256(secret))
+            System.out.println(token);
+
+            JWT.require(Algorithm.HMAC256(Resources.toString(Resources.getResource("newUserJwtSecret.key"), Charsets.UTF_8)))
                     .withIssuer("CATSS")
                     .build()
                     .verify(token);
