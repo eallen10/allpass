@@ -16,13 +16,21 @@ import {
     RESET_PASS_SUCCESS,
     CREATE_API_KEY_REQUEST,
     CREATE_API_KEY_FAILURE,
-    CREATE_API_KEY_SUCCESS
+    CREATE_API_KEY_SUCCESS,
+    UPDATE_USERS_FILTER
   } from '../constants/adminConstants';
   
   const initialState = {};
   
   const adminReducer = (state = initialState, action) => {
     switch (action.type) {
+      case UPDATE_USERS_FILTER:
+          let tempUsers = [];
+          tempUsers = state.users.filter(panel => panel.email.includes(action.filter));
+          return {
+            ...state,
+            filteredUsers: tempUsers
+          }
       case CREATE_USER_REQUEST:
         return {
           ...state
@@ -43,6 +51,7 @@ import {
       case GET_USERS_SUCCESS:
         return {
           ...state,
+          filteredUsers: action.users,
           users: action.users
         };
       case GET_USERS_FAILURE:

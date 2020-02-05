@@ -8,33 +8,22 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/allpass/filter/JwtTokenAuthenticationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/allpass/filter/JwtTokenAuthenticationFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/allpass/security/WebSecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/allpass/security/WebSecurityConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/allpass/utils/RESTUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/allpass/utils/RESTUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/test/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/AppTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/allpass/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allpass/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/allpass/controller/NewUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allpass/controller/NewUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/allpass/filter/JwtTokenAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allpass/filter/JwtTokenAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/allpass/security/WebSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allpass/security/WebSecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/allpass/utils/RESTUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allpass/utils/RESTUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allpass/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allpass/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../allpass-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../allpass-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../allpass-frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/actions/adminActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/actions/adminActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/components/AppComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/components/AppComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/components/CreateNewUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/components/CreateNewUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/components/LoginComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/components/LoginComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/actions/dataActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/actions/dataActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/components/mobile/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/components/mobile/Admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/components/mobile/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/components/mobile/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/components/mobile/LogPanels.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/components/mobile/LogPanels.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/components/mobile/MobileApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/components/mobile/MobileApp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/components/mobile/UserList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/components/mobile/UserList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/config/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/constants/adminConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/constants/adminConstants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/reducers/adminReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/reducers/adminReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/reducers/dialogReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/reducers/dialogReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/components/mobile/TopAppBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/components/mobile/TopAppBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/constants/dataConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/constants/dataConstants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/reducers/dataReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/reducers/dataReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../allpass-frontend/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../allpass-frontend/src/reducers/index.js" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,12 +46,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="474" />
-    <option name="y" value="1064" />
-    <option name="width" value="1657" />
-    <option name="height" value="965" />
   </component>
   <component name="ProjectId" id="1WMmCh7Y9xAEOHXicIVSvU6Rjvo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -87,6 +70,18 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -116,18 +111,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -140,6 +123,19 @@
       <updated>1578328519763</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="685" y="357" width="606" height="390" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580001448265">

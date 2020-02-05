@@ -9,6 +9,7 @@ import MainDrawer from './MainDrawer';
 import RootDialog from './RootDialog';
 import Admin from './Admin';
 import SimpleSnackbar from './SimpleSnackbar.js';
+import '../../css/MobileApp.css';
 
 class MobileApp extends Component {
   constructor() {
@@ -36,11 +37,13 @@ class MobileApp extends Component {
           <RootDialog />
           <TopAppBar />
           <MainDrawer />
-          <Switch> 
-            <Route path="/mobile/home" component={Home} />
-            <Route path="/mobile/account" component={Account} />
-            <Route path="/mobile/admin" component={Admin} />  
-          </Switch>
+          <div id="mobileContent">
+            <Switch> 
+              <Route path="/mobile/home" component={Home} />
+              <Route path="/mobile/account" component={Account} />
+              <Route path="/mobile/admin" component={Admin} />  
+            </Switch>
+          </div>
           <SimpleSnackbar />
         </div>
     );

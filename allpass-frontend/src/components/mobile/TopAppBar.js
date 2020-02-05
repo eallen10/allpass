@@ -24,7 +24,7 @@ class TopAppBar extends Component {
 
   render() {
     return (
-          <AppBar position="static" style={{ margin: 0 }}>
+          <AppBar position="fixed">
             <Toolbar>
               <IconButton 
                 edge="start" 

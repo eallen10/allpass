@@ -15,11 +15,6 @@ import java.util.UUID;
 @SpringBootApplication
 public class App {
     public static void main(String[] args) {
-        try {
-            System.out.println(SecurityUtils.getSaltedHash("swbhznk9"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         SpringApplication.run(App.class, args);
     }
 }

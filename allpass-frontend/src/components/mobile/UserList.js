@@ -17,11 +17,6 @@ import Button from '@material-ui/core/Button';
 import {deleteUser} from '../../actions/adminActions';
 import {openVerifyDialog} from '../../actions/dialogActions';
 
-const testData = 
-  [
-    { fname: 'ethan', lname: 'allen', username: 'eallen', timestamp: 12134144234, email: 'asldfssdfsdfsfsdfsdfsdfljf@gmail.com' }
-  ]
-
 const useStyles = makeStyles(theme => ({
     root: {
       width: '100%',
@@ -39,7 +34,6 @@ const useStyles = makeStyles(theme => ({
       overflow: 'hidden'
     }
   }));
-  
   function UserList(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
@@ -47,11 +41,17 @@ const useStyles = makeStyles(theme => ({
     const handleChange = panel => (event, isExpanded) => {
       setExpanded(isExpanded ? panel : false);
     };
-  
+
+    const date = timestamp => {
+      if(props.users.length > 0) {
+        return new Date(timestamp).toLocaleString();
+      } else {
+        return null;
+      }
+    }
     return (
       <div className={classes.root}>
         {props.users ? props.users.map(row => (
-        // {testData ? testData.map(row => ( 
           <ExpansionPanel 
             elevation={3} 
             expanded={expanded === row.id} 
@@ -95,7 +95,7 @@ const useStyles = makeStyles(theme => ({
                 <Grid item xs={6} style={{paddingTop: 0}}>
                   <List style={{padding: 0}}>
                     <ListItem style={{padding: 0}}>
-                      <ListItemText primary={'Created On'} secondary={row.timestamp} />
+                      <ListItemText primary={'Created On'} secondary={date(row.timestamp)} />
                     </ListItem>
                   </List>
                 </Grid>
@@ -124,7 +124,6 @@ const mapDispatchToProps = dispatch => {
   };
   
   const mapStateToProps = state => ({
-      users: state.admin.users
   });
   
   export default withCookies(

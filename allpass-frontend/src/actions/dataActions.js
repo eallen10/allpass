@@ -1,5 +1,5 @@
 import { GET_DATA_REQUEST, GET_DATA_SUCCESS, GET_DATA_FAILURE, DELETE_DATA_REQUEST, 
-  DELETE_DATA_SUCCESS, DELETE_DATA_FAILURE, ADD_DATA_REQUEST, ADD_DATA_SUCCESS, ADD_DATA_FAILURE, DECRYPT_PASSWORDS} from "../constants/dataConstants";
+  DELETE_DATA_SUCCESS, DELETE_DATA_FAILURE, ADD_DATA_REQUEST, ADD_DATA_SUCCESS, ADD_DATA_FAILURE, DECRYPT_PASSWORDS, UPDATE_RECORDS_FILTER} from "../constants/dataConstants";
 import config from '../../src/config'
 
 const getDataRequest = () => ({
@@ -46,6 +46,11 @@ const getDataRequest = () => ({
     type: DECRYPT_PASSWORDS,
     key: key
   });
+
+  export const recordsFilter = filter => ({
+    type: UPDATE_RECORDS_FILTER,
+    filter: filter
+})
 
 export const getData = () => {
     return dispatch => {

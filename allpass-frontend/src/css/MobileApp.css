@@ -1,0 +1,13 @@
+#mobileContent {
+    margin-top: 64px;
+}
+#mobileHomeContent {
+    height: calc(100vh - 65px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+#mobileAdminContent {
+    height: calc(100vh - 65px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

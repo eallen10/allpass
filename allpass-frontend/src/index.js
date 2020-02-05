@@ -7,6 +7,7 @@ import AppComponent from './components/AppComponent';
 import { render } from 'react-dom';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { CookiesProvider } from 'react-cookie';
+import CssBaseline from '@material-ui/core/CssBaseline';
 require('dotenv').config();
 
 window.store = store;
@@ -27,6 +28,7 @@ const theme = createMuiTheme({
 
 function App() {
   return (
+    <CssBaseline>
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <CookiesProvider>
@@ -36,6 +38,7 @@ function App() {
         </CookiesProvider>
       </BrowserRouter>
     </ThemeProvider>
+    </CssBaseline>
   );
 }
 

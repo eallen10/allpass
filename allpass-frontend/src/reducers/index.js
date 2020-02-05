@@ -5,7 +5,7 @@ import drawerReducer from './drawerReducer';
 import dialogReducer from './dialogReducer';
 import adminReducer from './adminReducer';
 import snackbarReducer from './snackbarReducer';
-import newUserReducer from './newUserReducer';
+import newUserReducer from './newUserReducer'
 
 const rootReducer = combineReducers({
     login: loginReducer,

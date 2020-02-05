@@ -5,7 +5,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import { connect } from 'react-redux';
-import {getData, deleteData} from '../../actions/dataActions.js'
+import { deleteData} from '../../actions/dataActions.js'
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import List from '@material-ui/core/List';
@@ -16,7 +16,6 @@ import Grid from '@material-ui/core/Grid';
 import {openDialog} from '../../actions/dialogActions';
 import { DECRYPT_DIALOG, YOU_SURE_DIALOG } from '../../constants/dialogConstants.js';
 import aes256 from 'aes256';
-import InfiniteScroll from 'react-infinite-scroller';
 import {openVerifyDialog} from '../../actions/dialogActions';
 
 const useStyles = makeStyles(theme => ({
@@ -38,10 +37,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function LogPanels(props) {
-  let filteredPanels = [];
-  if (props.data) {
-    filteredPanels = props.data.filter(panel => panel.account.includes(props.q));
-  }
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -65,7 +60,7 @@ function LogPanels(props) {
   }
   return (
     <div className={classes.root}>
-      {filteredPanels.map(row => (
+      {props.records.map(row => (
         <ExpansionPanel
           key={row.id} 
           elevation={3} 
@@ -117,7 +112,6 @@ function LogPanels(props) {
 
 const mapDispatchToProps = dispatch => {
     return {
-      getData: () => dispatch(getData()),
       deleteData: id => dispatch(deleteData(id)),
       openDialog: dialog => dispatch(openDialog(dialog)),
       openVerifyDialog: (title, message, action, object) => dispatch(openVerifyDialog(title, message, action, object))
@@ -125,7 +119,6 @@ const mapDispatchToProps = dispatch => {
   };
   
   const mapStateToProps = state => ({
-    data: state.data.data,
     mkey: state.data.mkey
   });
   
