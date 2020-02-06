@@ -14,11 +14,14 @@ import '../../css/MobileApp.css';
 class MobileApp extends Component {
   constructor() {
     super();
-    this.state = {}
+    this.state = {};
   }
 
   componentWillMount() {
-    if(this.props.jwt && this.props.decodedJWT.exp * 1000 > new Date().getTime()) {
+    if (
+      this.props.jwt &&
+      this.props.decodedJWT.exp * 1000 > new Date().getTime()
+    ) {
       this.props.history.push('/mobile/home');
     } else {
       this.handleLogout();
@@ -33,19 +36,19 @@ class MobileApp extends Component {
 
   render() {
     return (
-        <div id="mobileApp">
-          <RootDialog />
-          <TopAppBar />
-          <MainDrawer />
-          <div id="mobileContent">
-            <Switch> 
-              <Route path="/mobile/home" component={Home} />
-              <Route path="/mobile/account" component={Account} />
-              <Route path="/mobile/admin" component={Admin} />  
-            </Switch>
-          </div>
-          <SimpleSnackbar />
+      <div id='mobileApp'>
+        <RootDialog />
+        <TopAppBar />
+        <MainDrawer />
+        <div id='mobileContent'>
+          <Switch>
+            <Route path='/mobile/home' component={Home} />
+            <Route path='/mobile/account' component={Account} />
+            <Route path='/mobile/admin' component={Admin} />
+          </Switch>
         </div>
+        <SimpleSnackbar />
+      </div>
     );
   }
 }
@@ -65,8 +68,5 @@ const mapStateToProps = state => {
 };
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(MobileApp)
-)
+  connect(mapStateToProps, mapDispatchToProps)(MobileApp)
+);

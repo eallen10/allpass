@@ -8,12 +8,12 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { logout } from '../../actions/loginActions';
-import {toggleDrawer} from '../../actions/drawerActions'
+import { toggleDrawer } from '../../actions/drawerActions';
 
 class TopAppBar extends Component {
   constructor() {
     super();
-    this.state = {}
+    this.state = {};
   }
 
   handleLogout() {
@@ -24,28 +24,28 @@ class TopAppBar extends Component {
 
   render() {
     return (
-          <AppBar position="fixed">
-            <Toolbar>
-              <IconButton 
-                edge="start" 
-                color="inherit" 
-                aria-label="menu" 
-                onClick={() => {this.props.toggleDrawer(!this.props.open)}}>
-                <MenuIcon />
-              </IconButton>
-              <Typography variant="h6">
-                PersonalPass
-              </Typography>
-              <IconButton 
-                aria-label="display more actions" 
-                edge="end" color="inherit" 
-                style={{marginLeft: 'auto'}}
-                onClick={() => this.handleLogout()}
-              >
-                <ExitToAppIcon />
-              </IconButton>
-            </Toolbar>
-          </AppBar>
+      <AppBar position='fixed'>
+        <Toolbar>
+          <IconButton
+            edge='start'
+            color='inherit'
+            aria-label='menu'
+            onClick={() => {
+              this.props.toggleDrawer(!this.props.open);
+            }}>
+            <MenuIcon />
+          </IconButton>
+          <Typography variant='h6'>PersonalPass</Typography>
+          <IconButton
+            aria-label='display more actions'
+            edge='end'
+            color='inherit'
+            style={{ marginLeft: 'auto' }}
+            onClick={() => this.handleLogout()}>
+            <ExitToAppIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
     );
   }
 }
@@ -64,8 +64,5 @@ const mapStateToProps = state => {
 };
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(TopAppBar)
-)
+  connect(mapStateToProps, mapDispatchToProps)(TopAppBar)
+);

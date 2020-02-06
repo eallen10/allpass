@@ -8,9 +8,7 @@ import PropTypes from 'prop-types';
 import { TextField, Button } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { assignJWT } from '../actions/loginActions';
-import {
-  isMobile
-} from "react-device-detect";
+import { isMobile } from 'react-device-detect';
 
 class LoginComponent extends React.Component {
   constructor(props) {
@@ -23,9 +21,9 @@ class LoginComponent extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     });
   };
   handleSubmit() {
@@ -36,49 +34,56 @@ class LoginComponent extends React.Component {
   }
 
   detect = () => {
-    if(isMobile) {
-      return "/mobile"
+    if (isMobile) {
+      return '/mobile';
     } else {
-      return "/desktop"
+      return '/desktop';
     }
-  }
+  };
 
   componentDidUpdate() {
-    if (this.props.jwt && this.props.decodedJWT.exp * 1000 > new Date().getTime()) {
+    if (
+      this.props.jwt &&
+      this.props.decodedJWT.exp * 1000 > new Date().getTime()
+    ) {
       this.props.history.push(this.detect());
     }
   }
 
   UNSAFE_componentWillMount() {
     //TODO: need to validate jwt
-    if(this.props.jwt && this.props.decodedJWT.exp * 1000 > new Date().getTime()) {
+    if (
+      this.props.jwt &&
+      this.props.decodedJWT.exp * 1000 > new Date().getTime()
+    ) {
       this.props.history.push(this.detect());
     }
   }
   render() {
     return (
-      <div id="loginDivOuter">
-        <img src={logo} alt="" id="loginLogo" />
-        <div id="loginDivInner">
+      <div id='loginDivOuter'>
+        <img src={logo} alt='' id='loginLogo' />
+        <div id='loginDivInner'>
           <TextField
-            name="username"
-            label="username"
+            name='username'
+            label='username'
             value={this.state.value}
             onChange={this.handleChange}
           />
           <TextField
-            name="password"
-            label="password"
-            type="password"
+            name='password'
+            label='password'
+            type='password'
             value={this.state.value}
             onChange={this.handleChange}
           />
-          <Button 
-            className="loginButton"
-            variant="contained" 
-            color="primary"
-            onClick={() => { this.handleSubmit()}}
-          >
+          <Button
+            className='loginButton'
+            variant='contained'
+            color='primary'
+            onClick={() => {
+              this.handleSubmit();
+            }}>
             Login
           </Button>
         </div>
@@ -106,8 +111,5 @@ LoginComponent.propTypes = {
 };
 
 export default withCookies(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(LoginComponent)
+  connect(mapStateToProps, mapDispatchToProps)(LoginComponent)
 );

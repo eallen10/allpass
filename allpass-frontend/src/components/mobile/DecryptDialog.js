@@ -7,23 +7,23 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import { connect } from 'react-redux';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import {closeDialog} from '../../actions/dialogActions';
-import {addData} from '../../actions/dataActions';
+import { closeDialog } from '../../actions/dialogActions';
+import { addData } from '../../actions/dataActions';
 import aes256 from 'aes256';
 import { decryptPasswords } from '../../actions/dataActions';
 
 class DecryptDialog extends React.Component {
   constructor() {
     super();
-    this.state = {}
+    this.state = {};
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     });
   };
-  
+
   handleSubmit() {
     const { mpass } = this.state;
     if (mpass) {
@@ -33,8 +33,11 @@ class DecryptDialog extends React.Component {
 
   render() {
     return (
-      <Dialog open={this.props.dialog === 'DECRYPT_DIALOG'} onClose={() => this.props.closeDialog()} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Decrypt Passwords</DialogTitle>
+      <Dialog
+        open={this.props.dialog === 'DECRYPT_DIALOG'}
+        onClose={() => this.props.closeDialog()}
+        aria-labelledby='form-dialog-title'>
+        <DialogTitle id='form-dialog-title'>Decrypt Passwords</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Enter your Master Password to decrypt your Account Passwords
@@ -42,25 +45,22 @@ class DecryptDialog extends React.Component {
           <TextField
             autoFocus
             required
-            margin="dense"
-            name="mpass"
-            label="Master Password"
+            margin='dense'
+            name='mpass'
+            label='Master Password'
             onChange={this.handleChange}
             fullWidth
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => this.props.closeDialog()}>
-            Cancel
-          </Button>
-          <Button onClick={() => this.handleSubmit()} color="primary">
+          <Button onClick={() => this.props.closeDialog()}>Cancel</Button>
+          <Button onClick={() => this.handleSubmit()} color='primary'>
             Decrypt
           </Button>
         </DialogActions>
       </Dialog>
-  );
+    );
   }
-  
 }
 
 const mapDispatchToProps = dispatch => {

@@ -7,22 +7,22 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import { connect } from 'react-redux';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import {closeDialog} from '../../actions/dialogActions';
-import {addData} from '../../actions/dataActions';
-import {createUser} from '../../actions/adminActions';
+import { closeDialog } from '../../actions/dialogActions';
+import { addData } from '../../actions/dataActions';
+import { createUser } from '../../actions/adminActions';
 
 class CreateUserDialog extends React.Component {
   constructor() {
     super();
-    this.state = {}
+    this.state = {};
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     });
   };
-  
+
   handleSubmit() {
     const { fname, lname, email, username, pass1, pass2 } = this.state;
     if (fname && lname && email && username && pass1 && pass2) {
@@ -32,82 +32,82 @@ class CreateUserDialog extends React.Component {
 
   render() {
     return (
-      <Dialog open={this.props.dialog === 'CREATE_USER_DIALOG'} onClose={() => this.props.closeDialog()} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Create User</DialogTitle>
+      <Dialog
+        open={this.props.dialog === 'CREATE_USER_DIALOG'}
+        onClose={() => this.props.closeDialog()}
+        aria-labelledby='form-dialog-title'>
+        <DialogTitle id='form-dialog-title'>Create User</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Enter the information for the new user.
           </DialogContentText>
           <TextField
             autoFocus
-            margin="dense"
-            name="fname"
-            label="First Name"
+            margin='dense'
+            name='fname'
+            label='First Name'
             onChange={this.handleChange}
             fullWidth
           />
           <TextField
             autoFocus
-            margin="dense"
-            name="lname"
-            label="Last Name"
+            margin='dense'
+            name='lname'
+            label='Last Name'
             onChange={this.handleChange}
             fullWidth
           />
           <TextField
             autoFocus
-            margin="dense"
-            name="email"
-            label="Email Address"
+            margin='dense'
+            name='email'
+            label='Email Address'
             onChange={this.handleChange}
             fullWidth
           />
           <TextField
             autoFocus
-            margin="dense"
-            name="username"
-            label="Username"
+            margin='dense'
+            name='username'
+            label='Username'
             onChange={this.handleChange}
             fullWidth
           />
           <TextField
             autoFocus
-            margin="dense"
-            name="pass1"
-            label="Password"
-            type="password"
+            margin='dense'
+            name='pass1'
+            label='Password'
+            type='password'
             onChange={this.handleChange}
             fullWidth
           />
           <TextField
             autoFocus
-            margin="dense"
-            name="pass2"
-            label="Password"
-            type="password"
+            margin='dense'
+            name='pass2'
+            label='Password'
+            type='password'
             onChange={this.handleChange}
             fullWidth
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => this.props.closeDialog()}>
-            Cancel
-          </Button>
-          <Button onClick={() => this.handleSubmit()} color="primary">
+          <Button onClick={() => this.props.closeDialog()}>Cancel</Button>
+          <Button onClick={() => this.handleSubmit()} color='primary'>
             Create
           </Button>
         </DialogActions>
       </Dialog>
-  );
+    );
   }
-  
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     closeDialog: () => dispatch(closeDialog()),
-    createUser: (fname, lname, email, username, pass1, pass2) => 
-        dispatch(createUser(fname, lname, email, username, pass1, pass2)) 
+    createUser: (fname, lname, email, username, pass1, pass2) =>
+      dispatch(createUser(fname, lname, email, username, pass1, pass2))
   };
 };
 

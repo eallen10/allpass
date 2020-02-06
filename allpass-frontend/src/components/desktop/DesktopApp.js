@@ -12,11 +12,14 @@ import Admin from '../mobile/Admin';
 class DesktopApp extends Component {
   constructor() {
     super();
-    this.state = {}
+    this.state = {};
   }
 
   UNSAFE_componentWillMount() {
-    if(this.props.jwt && this.props.decodedJWT.exp * 1000 > new Date().getTime()) {
+    if (
+      this.props.jwt &&
+      this.props.decodedJWT.exp * 1000 > new Date().getTime()
+    ) {
       this.props.history.push('/desktop/home');
     } else {
       this.handleLogout();
@@ -31,16 +34,16 @@ class DesktopApp extends Component {
 
   render() {
     return (
-        <div id="mobileApp">
-          <RootDialog />
-          <TopAppBar />
-          <MainDrawer />
-          <Switch> 
-            <Route path="/desktop/home" component={Home} />
-            <Route path="/desktop/account" component={Account} />
-            <Route path="/desktop/admin" component={Admin} />  
-          </Switch>
-        </div>
+      <div id='mobileApp'>
+        <RootDialog />
+        <TopAppBar />
+        <MainDrawer />
+        <Switch>
+          <Route path='/desktop/home' component={Home} />
+          <Route path='/desktop/account' component={Account} />
+          <Route path='/desktop/admin' component={Admin} />
+        </Switch>
+      </div>
     );
   }
 }
@@ -60,8 +63,5 @@ const mapStateToProps = state => {
 };
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(DesktopApp)
-)
+  connect(mapStateToProps, mapDispatchToProps)(DesktopApp)
+);

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {getData} from '../../actions/dataActions.js';
+import { getData } from '../../actions/dataActions.js';
 import Typography from '@material-ui/core/Typography';
 import { withCookies } from 'react-cookie';
 import LogPanels from './LogPanels';
 import Button from '@material-ui/core/Button';
-import {openDialog} from '../../actions/dialogActions';
+import { openDialog } from '../../actions/dialogActions';
 import { ADD_LOG_DIALOG } from '../../constants/dialogConstants.js';
 import { decryptPasswords } from '../../actions/dataActions';
 import Grid from '@material-ui/core/Grid';
@@ -13,26 +13,26 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import '../../css/MobileApp.css';
-import {recordsFilter} from '../../actions/dataActions';
+import { recordsFilter } from '../../actions/dataActions';
 
-const renderLength = 25
+const renderLength = 25;
 
 class Home extends Component {
   constructor() {
     super();
     this.state = {
       scrollLength: renderLength
-    }
+    };
   }
 
   componentDidMount() {
     this.props.getData();
   }
 
-  handleChange = (event) => {
-    this.setState({scrollLength: renderLength})
+  handleChange = event => {
+    this.setState({ scrollLength: renderLength });
     this.props.recordsFilter(event.target.value);
-  }
+  };
 
   handleScroll = e => {
     const bottom =
@@ -54,34 +54,33 @@ class Home extends Component {
 
   render() {
     return (
-      <div id="mobileHomeContent" onScroll={this.handleScroll}>
-        <Grid  container style={{marginTop: 0, padding: 16}} spacing={2}>
+      <div id='mobileHomeContent' onScroll={this.handleScroll}>
+        <Grid container style={{ marginTop: 0, padding: 16 }} spacing={2}>
           <Grid item xs={7}>
-            <Typography variant="h6">
-              Home
-            </Typography>
+            <Typography variant='h6'>Home</Typography>
           </Grid>
           <Grid item xs={5}>
-            <Button size="small" color="primary" 
+            <Button
+              size='small'
+              color='primary'
               onClick={() => {
                 this.props.openDialog(ADD_LOG_DIALOG);
-              }}
-            >
+              }}>
               Add Account
             </Button>
           </Grid>
           <Grid item xs={8}>
             <TextField
-              id="input-with-icon-textfield"
-              name="query"
-              placeholder="Search"
+              id='input-with-icon-textfield'
+              name='query'
+              placeholder='Search'
               onChange={this.handleChange}
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">
+                  <InputAdornment position='start'>
                     <SearchIcon />
                   </InputAdornment>
-                ),
+                )
               }}
             />
           </Grid>
@@ -89,7 +88,7 @@ class Home extends Component {
             <LogPanels records={this.state.data ? this.state.data : []} />
           </Grid>
         </Grid>
-        </div>
+      </div>
     );
   }
 }
@@ -109,9 +108,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default withCookies(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Home)
-)
+export default withCookies(connect(mapStateToProps, mapDispatchToProps)(Home));

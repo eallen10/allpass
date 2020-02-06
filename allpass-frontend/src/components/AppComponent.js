@@ -6,11 +6,10 @@ import { withCookies } from 'react-cookie';
 import { assignJWT } from '../actions/loginActions';
 import { logout } from '../actions/loginActions';
 import { connect } from 'react-redux';
-import LoginComponent from './LoginComponent'
+import LoginComponent from './LoginComponent';
 import CreateNewUser from './CreateNewUser';
 
 class AppComponent extends React.Component {
-
   UNSAFE_componentWillMount() {
     if (this.props.cookies.get('jwt')) {
       this.props.assignJWT(this.props.cookies.get('jwt'));
@@ -19,12 +18,12 @@ class AppComponent extends React.Component {
 
   render() {
     return (
-      <div id="app">
+      <div id='app'>
         <Switch>
-          <Route path="/mobile" component={MobileApp} />
-          <Route path="/desktop" component={DesktopApp} />
-          <Route path="/newUser/:id" component={CreateNewUser} />
-          <Route path="/login" path="/" component={LoginComponent} />
+          <Route path='/mobile' component={MobileApp} />
+          <Route path='/desktop' component={DesktopApp} />
+          <Route path='/newUser/:id' component={CreateNewUser} />
+          <Route path='/login' path='/' component={LoginComponent} />
         </Switch>
       </div>
     );
@@ -42,9 +41,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default withCookies(withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(AppComponent)
-));
+export default withCookies(
+  withRouter(connect(mapStateToProps, mapDispatchToProps)(AppComponent))
+);

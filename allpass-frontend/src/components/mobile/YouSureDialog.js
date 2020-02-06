@@ -6,39 +6,37 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import { connect } from 'react-redux';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import {closeDialog} from '../../actions/dialogActions';
+import { closeDialog } from '../../actions/dialogActions';
 
 class YouSureDialog extends React.Component {
   constructor() {
     super();
-    this.state = {}
+    this.state = {};
   }
-  
-  handleSubmit() {
 
-  }
+  handleSubmit() {}
 
   render() {
     return (
-      <Dialog open={this.props.dialog === 'YOU_SURE_DIALOG'} onClose={() => this.props.closeDialog()} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">{this.props.title}</DialogTitle>
+      <Dialog
+        open={this.props.dialog === 'YOU_SURE_DIALOG'}
+        onClose={() => this.props.closeDialog()}
+        aria-labelledby='form-dialog-title'>
+        <DialogTitle id='form-dialog-title'>{this.props.title}</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            {this.props.message}
-          </DialogContentText>
+          <DialogContentText>{this.props.message}</DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => this.props.closeDialog()}>
-            Cancel
-          </Button>
-          <Button onClick={() => this.props.action(this.props.object.id)} color="primary">
+          <Button onClick={() => this.props.closeDialog()}>Cancel</Button>
+          <Button
+            onClick={() => this.props.action(this.props.object.id)}
+            color='primary'>
             Delete
           </Button>
         </DialogActions>
       </Dialog>
-  );
+    );
   }
-  
 }
 
 const mapDispatchToProps = dispatch => {

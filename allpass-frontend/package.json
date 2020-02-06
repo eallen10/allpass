@@ -25,10 +25,8 @@
   },
   "scripts": {
     "start": "REACT_APP_ENV=development react-scripts start",
-    "start:staging": "REACT_APP_ENV=staging react-scripts start",
-    "start:prod": "REACT_APP_ENV=production react-scripts start",
-    "build:staging": "REACT_APP_ENV=staging react-scripts build",
-    "build:prod": "REACT_APP_ENV=production react-scripts build"
+    "build": "REACT_APP_ENV=production react-scripts build",
+    "prettier": "prettier --write '**/*.{ts,js,css,html}'"
   },
   "browserslist": {
     "production": [
@@ -41,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "prettier": "^1.19.1"
   }
 }
