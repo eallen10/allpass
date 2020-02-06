@@ -1,12 +1,12 @@
-#mobileContent {
-    margin-top: 56px;
+#desktopContent {
+    margin-top: 64px;
 }
-#mobileHomeContent {
+#desktopHomeContent {
     height: calc(100vh - 65px);
     overflow-y: scroll;
     overflow-x: hidden;
 }
-#mobileAdminContent {
+#desktopAdminContent {
     height: calc(100vh - 65px);
     overflow-y: scroll;
     overflow-x: hidden;

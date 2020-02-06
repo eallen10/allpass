@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { logout } from '../../actions/loginActions';
-import Home from '../mobile/Home';
-import Account from '../mobile/Account';
-import TopAppBar from '../mobile/TopAppBar';
-import MainDrawer from '../mobile/MainDrawer';
-import RootDialog from '../mobile/RootDialog';
-import Admin from '../mobile/Admin';
+import Home from './Home';
+import Account from './Account';
+import TopAppBar from './TopAppBar';
+import MainDrawer from './MainDrawer';
+import RootDialog from './RootDialog';
+import Admin from './Admin';
+import SimpleSnackbar from './SimpleSnackbar.js';
+import '../../css/DesktopApp.css';
 
 class DesktopApp extends Component {
   constructor() {
@@ -15,7 +17,7 @@ class DesktopApp extends Component {
     this.state = {};
   }
 
-  UNSAFE_componentWillMount() {
+  componentWillMount() {
     if (
       this.props.jwt &&
       this.props.decodedJWT.exp * 1000 > new Date().getTime()
@@ -34,15 +36,18 @@ class DesktopApp extends Component {
 
   render() {
     return (
-      <div id='mobileApp'>
+      <div id='desktopApp'>
         <RootDialog />
         <TopAppBar />
         <MainDrawer />
-        <Switch>
-          <Route path='/desktop/home' component={Home} />
-          <Route path='/desktop/account' component={Account} />
-          <Route path='/desktop/admin' component={Admin} />
-        </Switch>
+        <div id='desktopContent'>
+          <Switch>
+            <Route path='/desktop/home' component={Home} />
+            <Route path='/desktop/account' component={Account} />
+            <Route path='/desktop/admin' component={Admin} />
+          </Switch>
+        </div>
+        <SimpleSnackbar />
       </div>
     );
   }
