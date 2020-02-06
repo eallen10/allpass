@@ -1,5 +1,6 @@
 #desktopContent {
     margin-top: 64px;
+    margin-left: 240px;
 }
 #desktopHomeContent {
     height: calc(100vh - 65px);
@@ -10,4 +11,8 @@
     height: calc(100vh - 65px);
     overflow-y: scroll;
     overflow-x: hidden;
+}
+#desktopApp .MuiDrawer-paper {
+    margin-top: 56px;
+    width: 240px;
 }

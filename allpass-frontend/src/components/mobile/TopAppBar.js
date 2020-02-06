@@ -25,7 +25,7 @@ class TopAppBar extends Component {
   render() {
     return (
       <AppBar position='fixed'>
-        <Toolbar>
+        <Toolbar style={{ minHeight: '56px' }}>
           <IconButton
             edge='start'
             color='inherit'

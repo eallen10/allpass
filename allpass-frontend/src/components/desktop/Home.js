@@ -54,7 +54,10 @@ class Home extends Component {
   render() {
     return (
       <div id='desktopHomeContent' onScroll={this.handleScroll}>
-        <Grid container style={{ marginTop: 0, padding: 16 }} spacing={2}>
+        <Grid
+          container
+          style={{ marginTop: 0, padding: 16, maxWidth: '500px' }}
+          spacing={2}>
           <Grid item xs={7}>
             <Typography variant='h6'>Home</Typography>
           </Grid>

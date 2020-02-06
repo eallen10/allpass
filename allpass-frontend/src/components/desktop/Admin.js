@@ -66,7 +66,10 @@ class Admin extends Component {
       : '';
     return (
       <div id='desktopHomeContent' onScroll={this.handleScroll}>
-        <Grid container style={{ marginTop: 0, padding: 16 }} spacing={2}>
+        <Grid
+          container
+          style={{ marginTop: 0, padding: 16, maxWidth: '500px' }}
+          spacing={2}>
           <Grid item xs={12}>
             <Typography variant='h5'>Admin</Typography>
           </Grid>

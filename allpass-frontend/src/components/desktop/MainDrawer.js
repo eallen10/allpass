@@ -52,8 +52,9 @@ class MainDrawer extends Component {
         open={this.props.open}
         onClose={() => {
           this.props.toggleDrawer(false);
-        }}>
-        <List>
+        }}
+        variant='permanent'>
+        <List style={{ marginTop: '18px' }}>
           <Typography variant='h6'>Personal Pass</Typography>
           <Typography variant='caption'>1.0.1</Typography>
           <Divider style={{ marginTop: '20px', marginBottom: '20px' }} />

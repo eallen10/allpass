@@ -10,3 +10,6 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.MuiDialog-paper {
+  max-width: 400px !important;
+}

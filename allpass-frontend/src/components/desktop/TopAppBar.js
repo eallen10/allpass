@@ -5,10 +5,8 @@ import { withRouter } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { logout } from '../../actions/loginActions';
-import { toggleDrawer } from '../../actions/drawerActions';
 
 class TopAppBar extends Component {
   constructor() {
@@ -24,17 +22,8 @@ class TopAppBar extends Component {
 
   render() {
     return (
-      <AppBar position='fixed'>
-        <Toolbar>
-          <IconButton
-            edge='start'
-            color='inherit'
-            aria-label='menu'
-            onClick={() => {
-              this.props.toggleDrawer(!this.props.open);
-            }}>
-            <MenuIcon />
-          </IconButton>
+      <AppBar position='fixed' style={{ zIndex: '1201' }}>
+        <Toolbar style={{ minHeight: '56px' }}>
           <Typography variant='h6'>PersonalPass</Typography>
           <IconButton
             aria-label='display more actions'
@@ -52,8 +41,7 @@ class TopAppBar extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    logout: () => dispatch(logout()),
-    toggleDrawer: open => dispatch(toggleDrawer(open))
+    logout: () => dispatch(logout())
   };
 };
 

@@ -15,7 +15,10 @@ class Account extends Component {
 
   render() {
     return (
-      <Grid container style={{ marginTop: 0, padding: 16 }} spacing={2}>
+      <Grid
+        container
+        style={{ marginTop: 0, padding: 16, maxWidth: '500px' }}
+        spacing={2}>
         <Grid item xs={12}>
           <Typography variant='h6'>Account</Typography>
         </Grid>
