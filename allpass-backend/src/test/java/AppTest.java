@@ -25,7 +25,8 @@ public class AppTest {
 //                    .build()
 //                    .verify(token);
 
-//            generateRecordsQuery();
+            generateRecordsQuery();
+            System.out.println();
             generateUsersQuery();
 
         } catch (Exception e) {

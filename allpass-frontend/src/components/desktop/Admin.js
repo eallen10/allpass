@@ -12,11 +12,12 @@ import { generateApiKey } from '../../actions/adminActions';
 import TextField from '@material-ui/core/TextField';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import config from '../../../src/config';
-import Tooltip from '@material-ui/core/Tooltip';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import { usersFilter } from '../../actions/adminActions';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 const renderLength = 25;
 
@@ -65,85 +66,114 @@ class Admin extends Component {
       ? config.frontend.networkInterface + '/newUser/' + this.props.apiKey
       : '';
     return (
-      <div id='desktopHomeContent' onScroll={this.handleScroll}>
-        <Grid
-          container
-          style={{ marginTop: 0, padding: 16, maxWidth: '500px' }}
-          spacing={2}>
+      <div id='desktopHomeContent'>
+        <Grid container style={{ marginTop: 0, padding: 16 }} spacing={2}>
           <Grid item xs={12}>
             <Typography variant='h5'>Admin</Typography>
           </Grid>
-          <Grid item xs={7}>
-            <Typography variant='h6'>API</Typography>
-          </Grid>
-          <Grid item xs={5}>
-            <Button
-              size='small'
-              color='primary'
-              onClick={() => {
-                this.props.generateApiKey();
-              }}>
-              Generate Url
-            </Button>
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              id='outlined-multiline-static'
-              disabled={!this.props.apiKey}
-              label='Api Key Url'
-              value={apiUrl}
-              defaultValue="Click 'Generate Url'"
-              variant='outlined'
-              margin='dense'
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <div hidden={!this.props.apiKey}>
-              <ClickAwayListener
-                onClickAway={() => this.setState({ apiKeyCopied: false })}>
-                <div>
-                  <CopyToClipboard
-                    text={apiUrl}
-                    onCopy={() => this.setState({ apiKeyCopied: true })}>
-                    <Button variant='contained' size='small' color='primary'>
-                      {this.state.apiKeyCopied ? 'Copied!' : 'Copy'}
+          <Grid item xs={6}>
+            <Card>
+              <CardContent>
+                <Grid container spacing={2}>
+                  <Grid item xs={8}>
+                    <Typography variant='h6'>Users</Typography>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Button
+                      size='small'
+                      color='primary'
+                      onClick={() => {
+                        this.props.openDialog(CREATE_USER_DIALOG);
+                      }}
+                    >
+                      Create User
                     </Button>
-                  </CopyToClipboard>
-                </div>
-              </ClickAwayListener>
-            </div>
+                  </Grid>
+                  <Grid item xs={12} style={{ marginBottom: '10px' }}>
+                    <TextField
+                      id='input-with-icon-textfield'
+                      name='query'
+                      placeholder='Search'
+                      onChange={this.handleChange}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position='start'>
+                            <SearchIcon />
+                          </InputAdornment>
+                        )
+                      }}
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    onScroll={this.handleScroll}
+                    style={{ height: '325px', overflowY: 'auto' }}
+                  >
+                    <UserList
+                      users={this.state.users ? this.state.users : []}
+                    />
+                  </Grid>
+                </Grid>
+              </CardContent>
+            </Card>
           </Grid>
-          <Grid item xs={9} />
-          <Grid item xs={7}>
-            <Typography variant='h6'>Users</Typography>
-          </Grid>
-          <Grid item xs={5}>
-            <Button
-              size='small'
-              color='primary'
-              onClick={() => {
-                this.props.openDialog(CREATE_USER_DIALOG);
-              }}>
-              Create User
-            </Button>
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              id='input-with-icon-textfield'
-              name='query'
-              placeholder='Search'
-              onChange={this.handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position='start'>
-                    <SearchIcon />
-                  </InputAdornment>
-                )
-              }}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <UserList users={this.state.users ? this.state.users : []} />
+          <Grid item xs={6}>
+            <Card>
+              <CardContent>
+                <Grid container spacing={2}>
+                  <Grid item xs={8}>
+                    <Typography variant='h6'>API</Typography>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Button
+                      size='small'
+                      color='primary'
+                      onClick={() => {
+                        this.props.generateApiKey();
+                      }}
+                    >
+                      Generate Url
+                    </Button>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      id='outlined-multiline-static'
+                      disabled={!this.props.apiKey}
+                      label='Api Key Url'
+                      value={apiUrl}
+                      defaultValue="Click 'Generate Url'"
+                      variant='outlined'
+                      margin='dense'
+                    />
+                  </Grid>
+                  <Grid item xs={3}>
+                    <div hidden={!this.props.apiKey}>
+                      <ClickAwayListener
+                        onClickAway={() =>
+                          this.setState({ apiKeyCopied: false })
+                        }
+                      >
+                        <div>
+                          <CopyToClipboard
+                            text={apiUrl}
+                            onCopy={() => this.setState({ apiKeyCopied: true })}
+                          >
+                            <Button
+                              variant='contained'
+                              size='small'
+                              color='primary'
+                            >
+                              {this.state.apiKeyCopied ? 'Copied!' : 'Copy'}
+                            </Button>
+                          </CopyToClipboard>
+                        </div>
+                      </ClickAwayListener>
+                    </div>
+                  </Grid>
+                </Grid>
+              </CardContent>
+            </Card>
           </Grid>
         </Grid>
       </div>

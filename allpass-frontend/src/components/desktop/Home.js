@@ -13,6 +13,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import { recordsFilter } from '../../actions/dataActions';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 const renderLength = 25;
 
@@ -53,42 +55,59 @@ class Home extends Component {
 
   render() {
     return (
-      <div id='desktopHomeContent' onScroll={this.handleScroll}>
-        <Grid
-          container
-          style={{ marginTop: 0, padding: 16, maxWidth: '500px' }}
-          spacing={2}>
-          <Grid item xs={7}>
-            <Typography variant='h6'>Home</Typography>
-          </Grid>
-          <Grid item xs={5}>
-            <Button
-              size='small'
-              color='primary'
-              onClick={() => {
-                this.props.openDialog(ADD_LOG_DIALOG);
-              }}>
-              Add Account
-            </Button>
-          </Grid>
-          <Grid item xs={8}>
-            <TextField
-              id='input-with-icon-textfield'
-              name='query'
-              placeholder='Search'
-              onChange={this.handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position='start'>
-                    <SearchIcon />
-                  </InputAdornment>
-                )
-              }}
-            />
-          </Grid>
+      <div id='desktopHomeContent'>
+        <Grid container style={{ marginTop: 0, padding: 16 }} spacing={2}>
           <Grid item xs={12}>
-            <LogPanels records={this.state.data ? this.state.data : []} />
+            <Typography variant='h5'>Home</Typography>
           </Grid>
+          <Grid item xs={6}>
+            <Card>
+              <CardContent>
+                <Grid container spacing={2}>
+                  <Grid item xs={8}>
+                    <Typography variant='h6'>Records</Typography>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Button
+                      size='small'
+                      color='primary'
+                      onClick={() => {
+                        this.props.openDialog(ADD_LOG_DIALOG);
+                      }}
+                    >
+                      Add Account
+                    </Button>
+                  </Grid>
+                  <Grid item xs={12} style={{ marginBottom: '10px' }}>
+                    <TextField
+                      id='input-with-icon-textfield'
+                      name='query'
+                      placeholder='Search'
+                      onChange={this.handleChange}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position='start'>
+                            <SearchIcon />
+                          </InputAdornment>
+                        )
+                      }}
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    onScroll={this.handleScroll}
+                    style={{ height: '325px', overflowY: 'auto' }}
+                  >
+                    <LogPanels
+                      records={this.state.data ? this.state.data : []}
+                    />
+                  </Grid>
+                </Grid>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={6}></Grid>
         </Grid>
       </div>
     );

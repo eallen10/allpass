@@ -17,7 +17,7 @@ class Account extends Component {
     return (
       <Grid container style={{ marginTop: 0, padding: 16 }} spacing={2}>
         <Grid item xs={12}>
-          <Typography variant='h6'>Account</Typography>
+          <Typography variant='h5'>Account</Typography>
         </Grid>
         <Grid item xs={6}>
           <List style={{ padding: 0 }}>

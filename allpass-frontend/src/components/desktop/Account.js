@@ -6,6 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 class Account extends Component {
   constructor() {
@@ -15,52 +17,60 @@ class Account extends Component {
 
   render() {
     return (
-      <Grid
-        container
-        style={{ marginTop: 0, padding: 16, maxWidth: '500px' }}
-        spacing={2}>
+      <Grid container style={{ marginTop: 0, padding: 16 }} spacing={2}>
         <Grid item xs={12}>
-          <Typography variant='h6'>Account</Typography>
+          <Typography variant='h5'>Account</Typography>
         </Grid>
         <Grid item xs={6}>
-          <List style={{ padding: 0 }}>
-            <ListItem style={{ padding: 0 }}>
-              <ListItemText
-                primary={'First Name'}
-                secondary={this.props.decodedJWT.fname}
-              />
-            </ListItem>
-          </List>
-        </Grid>
-        <Grid item xs={6}>
-          <List style={{ padding: 0 }}>
-            <ListItem style={{ padding: 0 }}>
-              <ListItemText
-                primary={'Last Name'}
-                secondary={this.props.decodedJWT.lname}
-              />
-            </ListItem>
-          </List>
-        </Grid>
-        <Grid item xs={6}>
-          <List style={{ padding: 0 }}>
-            <ListItem style={{ padding: 0 }}>
-              <ListItemText
-                primary={'Email'}
-                secondary={this.props.decodedJWT.email}
-              />
-            </ListItem>
-          </List>
-        </Grid>
-        <Grid item xs={6}>
-          <List style={{ padding: 0 }}>
-            <ListItem style={{ padding: 0 }}>
-              <ListItemText
-                primary={'Username'}
-                secondary={this.props.decodedJWT.username}
-              />
-            </ListItem>
-          </List>
+          <Card>
+            <CardContent>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <Typography variant='h6'>Details</Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <List style={{ padding: 0 }}>
+                    <ListItem style={{ padding: 0 }}>
+                      <ListItemText
+                        primary={'First Name'}
+                        secondary={this.props.decodedJWT.fname}
+                      />
+                    </ListItem>
+                  </List>
+                </Grid>
+                <Grid item xs={6}>
+                  <List style={{ padding: 0 }}>
+                    <ListItem style={{ padding: 0 }}>
+                      <ListItemText
+                        primary={'Last Name'}
+                        secondary={this.props.decodedJWT.lname}
+                      />
+                    </ListItem>
+                  </List>
+                </Grid>
+                <Grid item xs={6}>
+                  <List style={{ padding: 0 }}>
+                    <ListItem style={{ padding: 0 }}>
+                      <ListItemText
+                        primary={'Email'}
+                        secondary={this.props.decodedJWT.email}
+                      />
+                    </ListItem>
+                  </List>
+                </Grid>
+                <Grid item xs={6}>
+                  <List style={{ padding: 0 }}>
+                    <ListItem style={{ padding: 0 }}>
+                      <ListItemText
+                        primary={'Username'}
+                        secondary={this.props.decodedJWT.username}
+                      />
+                    </ListItem>
+                  </List>
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
         </Grid>
       </Grid>
     );

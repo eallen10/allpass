@@ -57,7 +57,7 @@ class Home extends Component {
       <div id='mobileHomeContent' onScroll={this.handleScroll}>
         <Grid container style={{ marginTop: 0, padding: 16 }} spacing={2}>
           <Grid item xs={7}>
-            <Typography variant='h6'>Home</Typography>
+            <Typography variant='h5'>Home</Typography>
           </Grid>
           <Grid item xs={5}>
             <Button
