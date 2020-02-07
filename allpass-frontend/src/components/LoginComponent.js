@@ -50,7 +50,7 @@ class LoginComponent extends React.Component {
     }
   }
 
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     //TODO: need to validate jwt
     if (
       this.props.jwt &&
@@ -83,7 +83,8 @@ class LoginComponent extends React.Component {
             color='primary'
             onClick={() => {
               this.handleSubmit();
-            }}>
+            }}
+          >
             Login
           </Button>
         </div>

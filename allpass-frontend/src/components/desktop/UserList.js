@@ -54,18 +54,22 @@ function UserList(props) {
       {props.users
         ? props.users.map(row => (
             <ExpansionPanel
+              key={row.username}
               elevation={3}
               expanded={expanded === row.id}
               onChange={handleChange(row.id)}
-              style={{ marginBottom: '8px' }}>
+              style={{ marginBottom: '8px' }}
+            >
               <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon />}
                 classes={{
                   content: classes.content
-                }}>
+                }}
+              >
                 <PersonIcon style={{ paddingRight: '12px' }} />
                 <Typography
-                  style={{ textOverflow: 'ellipsis', overflow: 'hidden' }}>
+                  style={{ textOverflow: 'ellipsis', overflow: 'hidden' }}
+                >
                   {row.email}
                 </Typography>
               </ExpansionPanelSummary>
@@ -124,7 +128,8 @@ function UserList(props) {
                       props.deleteUser,
                       row
                     );
-                  }}>
+                  }}
+                >
                   Delete
                 </Button>
               </ExpansionPanelActions>

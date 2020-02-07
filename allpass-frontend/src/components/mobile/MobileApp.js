@@ -17,7 +17,7 @@ class MobileApp extends Component {
     this.state = {};
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (
       this.props.jwt &&
       this.props.decodedJWT.exp * 1000 > new Date().getTime()
