@@ -1,4 +1,6 @@
-.key
+**.lock
+**.bin
+**.key
 .gradle
 \build/
 
