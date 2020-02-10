@@ -2,6 +2,8 @@
 
 Allpass is an open-source web app platform that allows multiple users to store and manage their passwords. All passwords are encrypted before they are sent to the backend using AES-256 and a master password.
 
+#### Get the code: [https://github.com/eallen10/allpass](https://github.com/eallen10/allpass)
+
 ## Getting Started
 
 * Clone the repo!
